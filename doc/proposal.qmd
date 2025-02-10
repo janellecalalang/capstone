@@ -1,7 +1,7 @@
 ---
-title: "Proposal: [Your project name]"
+title: "From Coach to Old Navy: The Role of Politics in U.S. Fashion Trends"
 subtitle: "DATA 450 Capstone"
-author: "[Your Name]"
+author: "Janelle Calalang"
 date: today
 date-format: long
 bibliography: references.bib
@@ -13,50 +13,65 @@ jupyter: python3
 
 # Introduction
 
-[This section should contain background and introduction to your general topic.]
+The fashion industry is a dynamic field that is a reflection of broader societal changes, including political and economic events. This project aims to analyze how significant political events have influenced consumer spending on fashion, by a comparison between luxury and mass-market brands. The study will examine sales trends for Tapestry (luxury brands like Coach, Kate Spade, Stuart Weitzman) and Gap Inc. (mass-market brands like Old Navy, Gap) to observe patterns in consumer behavior during key historical moments. By using time-series data and statistical analysis, this project will provide insights into the relationship between political events and fashion consumption in the United States.
+
+To provide historical context, I will be using the Mercatus Center's yearly ["The Economic Situation"](https://www.mercatus.org/research/policy-briefs/economic-situation-december-2012) December release, which provides a detailed analysis of key economic trends, policy changes, and financial developments in the United States. This report examines indicators such as GDP growth, inflation, employment rates, and fiscal policy. Events such as presidential elections, financial crises, and major legislative changes will be annotated in the visualizations to highlight potential correlations with shifts in fashion sales.
 
 # Dataset
 
-[In this section, desribe the dataset(s). This includes things like where you
-obtained the dataset. Include a full citation, as specified 
-[here](https://guides.lib.umich.edu/c.php?g=282964&p=3285995). Describe how the
-data was obtained by the data owner/curator, as best as you can. List the 
-variables that you plan to use in your analysis, for example:
+Since I will be focusing on the years 2012 to 2024, the primary dataset will be built using annual financial reports from [Tapestry](https://tapestry.gcs-web.com/presentations-and-financial-reports) and [Gap Inc.](https://investors.gapinc.com/financial-information/default.aspx?widgetId=annual-reports), which provide disaggregated net sales data for U.S. regions. These reports are consistent in format for these brands over several fiscal years, making them suitable for time-series analysis.
 
-* weight: The patient's weight (kg)
-* sex: The patient's sex, male or female
-* age: The patient's age (months)
+Variables:
 
-]
+* Year: Fiscal year of the report.
+
+* Brand: Specific brand (e.g., Coach, Old Navy).
+
+* Net U.S. Sales: Annual sales revenue in millions of dollars.
+
+* Region: U.S. sales only (extracted from global figures).
 
 # Data Acquisition and Processing
 
-[In this section, if applicable, describe how you will obtain the data (if it's
-anything more complicated than a simple download). Discuss what data 
-processing steps will be needed, such as recoding variables, data cleaning,
-data tidying, imputing missing values, etc. See sections 1c, 1d, 1e in the 
-"Good Enough Practices" paper.]
+The data will have to be manually extracted from the annual financial reports since they provide detailed, disaggregated U.S. sales figures. While this process requires a time investment of approximately 1 day, the reports are consistent in format, which ensure accuracy for my research.
+
+Steps:
+
+* Download annual reports for both companies.
+
+* Extract U.S. net sales data for each brand from tables in the reports.
+
+* Organize data into a structured format (CSV) with columns for year, brand, sales, and region.
+
+* Clean and standardize data (e.g., converting units).
+
+This manual data preparation ensures a high-quality dataset for analysis and allows for a direct comparison between luxury and mass-market brands.
 
 # Research Questions and Methodology
 
-[In this section, list each of the questions you will explore. Following each
-question, provide a detailed and specific plan for how you plan to answer the 
-question. Include the specific steps you will take, what form the answer will 
-take (a number? table? visualization? model? Give all the specifics), and 
-estimate how many hours each question will take to complete.]
+Research Question 1: How do U.S. sales of luxury brands (Tapestry) compare to mass-market brands (Gap Inc.) during major political and economic events from 2012 to 2024?
 
-1. Is smoking correlated with diabetes? To answer this, I will create a filled
-bar plot, with the left bar representing non-smokers, the middle bar
-representing people who smoke moderately, and the right bar representing heavy
-smokers. The bars will be the same height, and each bar will be
-colored two colors based on the proportion of patients in the group who do or
-do not have diabetes.
+* Plan: To answer this question, I will create a time-series plot comparing annual U.S. sales for Tapestry brands and Gap Inc. brands from 2012 to 2024. Key events, such as the COVID-19 pandemic and presidential elections, will be marked on the timeline to identify potential correlations. Each brand’s sales will be represented by being color-coded by company with annotations for major events.
 
-2. Question 2? Plan for question 2.
+* Output: Time-series visualization with annotations.
 
-3. Question 3? Plan for question 3.
+* Estimated Time: Around 6 to 8 hours.
 
-4. etc.
+Research Question 2: Do luxury and mass-market brands experience different sales trends during periods of political instability from 2012 to 2024?
+
+* Plan: I will calculate the percentage change in U.S. sales year-over-year for each brand. A bar graph will be created to display these changes, grouped by brand category (luxury vs. mass-market). The analysis will include regression models to determine if the impact of these events differs between the two categories.
+
+* Output: Bar graph and regression analysis.
+
+* Estimated Time: 6-8 hours.
+
+Research Question 3: How do consumer spending patterns shift during specific events?
+
+* Plan: Using the cleaned dataset for the years 2012 to 2024, I will identify and highlight periods of sudden increases or decreases in sales. I will create a simple line graph to display changes in sales by brand category over time. Additionally, I will explore correlations between these shifts and economic events.
+
+* Output: Line graph and correlation analysis.
+
+* Estimated Time: 6-8 hours.
 
 # Work plan
 
@@ -64,16 +79,22 @@ do not have diabetes.
 have around 7 hours worth of work each week. Writing work counts. Several tasks
 have already been filled in for you.]
 
-**Week 4 (2/10 - 2/16):** [Just an example: 
+**Week 4 (2/10 - 2/16):** 
 
-* Data tidying and recoding (4 hours)
-* Question 2 (4 hours).]
+* Data tidying and recoding (1-2 Days)
+* Question 1 (6-8 hours).
 
 **Week 5 (2/17 - 2/23):**
 
+* Question 2 (6-8 hours).
+
 **Week 6 (2/24 - 3/2):**
 
+* Question 3 (6-8 hours).
+
 **Week 7 (3/3 - 3/9):**
+
+* Review research and create notes on findings/correlations (4 hours).
 
 * Presentation prep and practice (4 hours)
 
@@ -116,10 +137,6 @@ week. The remaining time will be used for writing up and presenting your results
 * Peer feedback (2 hours)
 * [Do not schedule any other tasks for this week.]
 
-## Some cool Quarto stuff
-
-[You can delete this section from your proposal.]
-
 For your reference, here's an example of a Python code cell in Quarto,
 along with a figure that gets generated, along with a caption and a label
 so that it can be referred to automatically as "Figure 1" (or whatever)
@@ -145,10 +162,10 @@ ax.grid(True)
 plt.show()
 ```
 
-Here's an example of citing a source [see @phil99, pp. 33-35]. Be sure the source information is entered in "BibTeX" form in the `references.bib` file.
-
 # References
 
-[The bibliography will automatically get generated. Any sources you
-cite in the document will be included. Other entries in the `.bib` file
-will not be included.]
+[Gap Inc. Annual Reports](https://investors.gapinc.com/financial-information/default.aspx?widgetId=annual-reports)
+
+[Tapestry Annual Reports](https://tapestry.gcs-web.com/presentations-and-financial-reports)
+
+["The Economic Situation" 2012 Release](https://www.mercatus.org/research/policy-briefs/economic-situation-december-2012)
