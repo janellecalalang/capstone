@@ -1,0 +1,95 @@
+Year,Brand,Luxury or Mass-Market,Net Sales ($ Millions),Gross Profit ($ Millions),Net Income ($ Millions) 
+2012,Abercrombie,Mass-Market,4511.00,2817.00,237.00
+2013,Abercrombie,Mass-Market,4116.90,2575.43,54.63
+2014,Abercrombie,Mass-Market,3744.00,2313.00,51.82
+2015,Abercrombie,Mass-Market,3518.68,2157.54,35.58
+2016,Abercrombie,Mass-Market,3326.74,2028.57,3.90
+2017,Abercrombie,Mass-Market,3492.69,2083.84,7.09
+2018,Abercrombie,Mass-Market,3590.11,2159.92,74.54
+2019,Abercrombie,Mass-Market,3623.07,2150.92,39.36
+2020,Abercrombie,Mass-Market,3125.38,1891.21,-114.02
+2021,Abercrombie,Mass-Market,3712.77,2312.00,308.97
+2022,Abercrombie,Mass-Market,3697.75,2104.54,10.39
+2023,Abercrombie,Mass-Market,4280.68,2693.41,335.41
+2024,Abercrombie,Mass-Market,4948.59,,189.70
+2012,American Eagle,Mass-Market,3120.00,1145.00,232.10
+2013,American Eagle,Mass-Market,3305.80,1114.00,83.00
+2014,American Eagle,Mass-Market,3282.87,1154.67,88.79
+2015,American Eagle,Mass-Market,3521.85,1302.73,218.10
+2016,American Eagle,Mass-Market,3609.87,1366.93,212.40
+2017,American Eagle,Mass-Market,3795.55,1370.51,204.20
+2018,American Eagle,Mass-Market,4035.72,1487.64,261.90
+2019,American Eagle,Mass-Market,4308.21,1522.30,191.30
+2020,American Eagle,Mass-Market,3759.11,1148.15,-209.27
+2021,American Eagle,Mass-Market,5010.79,1991.79,419.63
+2022,American Eagle,Mass-Market,4989.83,1745.25,125.14
+2023,American Eagle,Mass-Market,5261.77,2024.58,170.04
+2024,American Eagle,Mass-Market,5328.65,2088.93,329.38
+2012,Coach,Luxury,4763.18,3466.08,1038.91
+2013,Coach,Luxury,5075.39,3698.15,1034.42
+2014,Coach,Luxury,4806.00,3296.00,781.00
+2012,Coach,Luxury,4763.00,3466.00,1038.90
+2013,Coach,Luxury,5075.40,3698.10,1034.40
+2014,Coach,Luxury,4806.20,3297.00,781.30
+2015,Coach,Luxury,4191.60,2908.60,402.40
+2016,Coach,Luxury,4491.80,3051.30,460.50
+2017,Coach,Luxury,4488.30,3081.10,591.00
+2018,Coach,Luxury,5880.00,3853.90,397.50
+2019,Coach,Luxury,6027.10,4053.70,643.40
+2020,Coach,Luxury,4961.40,3239.30,-652.10
+2021,Coach,Luxury,5746.30,4081.90,834.20
+2022,Coach,Luxury,6684.50,4650.40,856.30
+2023,Coach,Luxury,6660.90,4714.90,936.00
+2024,Coach,Luxury,6671.20,4889.50,816.00
+2012,Gap,Mass-Market,15651.00,6200.00,1135.00
+2013,Gap,Mass-Market,16148.00,6293.00,1280.00
+2014,Gap,Mass-Market,16435.00,6289.00,1262.00
+2015,Gap,Mass-Market,15797.00,5720.00,920.00
+2016,Gap,Mass-Market,15516.00,5640.00,676.00
+2017,Gap,Mass-Market,15855.00,6066.00,848.00
+2018,Gap,Mass-Market,16580.00,6322.00,1003.00
+2019,Gap,Mass-Market,16383.00,6133.00,351.00
+2020,Gap,Mass-Market,13800.00,4705.00,-665.00
+2021,Gap,Mass-Market,16670.00,6637.00,256.00
+2022,Gap,Mass-Market,15616.00,5359.00,-202.00
+2023,Gap,Mass-Market,14889.00,5775.00,502.00
+2024,Gap,Mass-Market,15100.00,5779.00,844.00
+2012,Kate Spade,Luxury,544.77,339.93,74.51
+2013,Kate Spade,Luxury,1264.94,725.58,72.99
+2014,Kate Spade,Luxury,1138.60,680.27,159.16
+2015,Kate Spade,Luxury,1242.72,754.11,17.09
+2016,Kate Spade,Luxury,1381.48,826.92,153.58
+2017,Kate Spade,Luxury,1280.00,711.00,-62.00
+2018,Kate Spade,Luxury,1284.70,705.70,-62.00
+2019,Kate Spade,Luxury,1366.80,863.60,165.70
+2020,Kate Spade,Luxury,1149.50,682.90,-99.30
+2021,Kate Spade,Luxury,1210.00,768.40,108.50
+2022,Kate Spade,Luxury,1445.50,912.00,157.40
+2023,Kate Spade,Luxury,1418.90,900.10,115.00
+2024,Kate Spade,Luxury,1334.40,871.20,132.60
+2012,Michael Kors,Luxury,1237.10,753.10,147.36
+2013,Michael Kors,Luxury,2094.75,1306.56,397.60
+2014,Michael Kors,Luxury,3170.52,2016.07,661.49
+2015,Michael Kors,Luxury,4199.66,2647.65,881.02
+2016,Michael Kors,Luxury,4538.80,2797.20,837.70
+2017,Michael Kors,Luxury,4347.90,2661.40,551.50
+2018,Michael Kors,Luxury,4718.60,2859.30,592.10
+2019,Michael Kors,Luxury,5238.00,3180.00,542.00
+2020,Michael Kors,Luxury,5551.00,3271.00,-225.00
+2021,Michael Kors,Luxury,5654.00,3744.00,823.00
+2022,Michael Kors,Luxury,5619.00,3724.00,619.00
+2023,Michael Kors,Luxury,5170.00,3339.00,-229.00
+2024,Michael Kors,Luxury,3407.00,2195.00,-535.00
+2012,Stuart Weitzman,Luxury,255.00,165.75,30.60
+2013,Stuart Weitzman,Luxury,270.00,162.00,29.70
+2014,Stuart Weitzman,Luxury,313.00,187.80,37.56
+2015,Stuart Weitzman,Luxury,300.00,,32.00
+2016,Stuart Weitzman,Luxury,345.00,46.00,22.00
+2017,Stuart Weitzman,Luxury,373.60,34.00,-2.00
+2018,Stuart Weitzman,Luxury,373.80,47.00,20.60
+2019,Stuart Weitzman,Luxury,389.40,194.00,-51.00
+2020,Stuart Weitzman,Luxury,286.20,145.00,-621.00
+2021,Stuart Weitzman,Luxury,283.20,164.50,-8.60
+2022,Stuart Weitzman,Luxury,317.70,184.60,1.80
+2023,Stuart Weitzman,Luxury,281.60,184.60,1.80
+2024,Stuart Weitzman,Luxury,241.50,142.90,-21.20
