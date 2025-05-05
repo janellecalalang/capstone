@@ -2,13 +2,6 @@ project:
   type: website
   output-dir: docs
 
-website:
-  title: "From Coach to Old Navy"
-  navbar:
-    left:
-      - href: index.qmd
-        text: Home
-
 format:
   html:
     theme: default
