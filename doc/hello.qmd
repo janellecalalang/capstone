@@ -1,0 +1,15 @@
+---
+title: "Proposal: [Your project name]"
+subtitle: "DATA 450 Capstone"
+author: "[Your Name]"
+date: today
+date-format: long
+bibliography: references.bib
+number-sections: true
+format:
+  pdf: default
+---
+
+# Introduction
+
+[This section should contain background and introduction to your general topic.]

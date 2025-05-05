@@ -1,0 +1,105 @@
+Brand,Year,Num Posts,Avg Sentiment
+Abercrombie,2012,8,0.137
+Abercrombie,2013,4,0.153
+Abercrombie,2014,5,0.11
+Abercrombie,2015,3,0.112
+Abercrombie,2016,1,0.175
+Abercrombie,2017,3,0.155
+Abercrombie,2018,1,0.083
+Abercrombie,2019,4,0.108
+Abercrombie,2020,1,0.25
+Abercrombie,2021,12,0.197
+Abercrombie,2022,12,0.076
+Abercrombie,2023,4,0.097
+Abercrombie,2024,5,0.325
+American Eagle,2012,19,0.112
+American Eagle,2013,31,0.131
+American Eagle,2014,21,0.149
+American Eagle,2015,14,0.111
+American Eagle,2016,9,0.13
+American Eagle,2017,5,0.162
+American Eagle,2018,9,0.148
+American Eagle,2019,12,0.127
+American Eagle,2020,3,0.159
+American Eagle,2021,11,0.139
+American Eagle,2022,11,0.111
+American Eagle,2023,1,0.304
+American Eagle,2024,1,0.186
+Coach,2012,1,0.504
+Coach,2013,18,0.159
+Coach,2014,14,0.165
+Coach,2015,10,0.076
+Coach,2016,0,0.0
+Coach,2017,2,0.179
+Coach,2018,5,0.112
+Coach,2019,1,0.17
+Coach,2020,1,0.034
+Coach,2021,7,0.197
+Coach,2022,4,0.06
+Coach,2023,0,0.0
+Coach,2024,0,0.0
+Gap,2012,0,0.0
+Gap,2013,0,0.0
+Gap,2014,0,0.0
+Gap,2015,0,0.0
+Gap,2016,0,0.0
+Gap,2017,0,0.0
+Gap,2018,0,0.0
+Gap,2019,0,0.0
+Gap,2020,29,0.043
+Gap,2021,78,0.047
+Gap,2022,81,0.021
+Gap,2023,29,-0.006
+Gap,2024,14,0.167
+H&M,2012,0,0.0
+H&M,2013,0,0.0
+H&M,2014,0,0.0
+H&M,2015,0,0.0
+H&M,2016,0,0.0
+H&M,2017,26,0.133
+H&M,2018,47,0.114
+H&M,2019,32,0.146
+H&M,2020,23,0.161
+H&M,2021,30,0.092
+H&M,2022,40,0.152
+H&M,2023,8,0.089
+H&M,2024,7,0.148
+Kate Spade,2012,7,0.067
+Kate Spade,2013,11,0.186
+Kate Spade,2014,17,0.184
+Kate Spade,2015,11,0.105
+Kate Spade,2016,10,0.154
+Kate Spade,2017,10,0.201
+Kate Spade,2018,8,0.077
+Kate Spade,2019,11,0.077
+Kate Spade,2020,2,0.251
+Kate Spade,2021,9,0.172
+Kate Spade,2022,5,0.168
+Kate Spade,2023,0,0.0
+Kate Spade,2024,0,0.0
+Michael Kors,2012,8,0.203
+Michael Kors,2013,17,0.157
+Michael Kors,2014,15,0.173
+Michael Kors,2015,16,0.103
+Michael Kors,2016,4,0.189
+Michael Kors,2017,3,0.194
+Michael Kors,2018,8,0.123
+Michael Kors,2019,5,0.1
+Michael Kors,2020,6,0.103
+Michael Kors,2021,7,0.146
+Michael Kors,2022,4,0.062
+Michael Kors,2023,0,0.0
+Michael Kors,2024,2,0.191
+Stuart Weitzman,2012,0,0.0
+Stuart Weitzman,2013,2,-0.056
+Stuart Weitzman,2014,0,0.0
+Stuart Weitzman,2015,2,0.278
+Stuart Weitzman,2016,2,0.106
+Stuart Weitzman,2017,2,0.446
+Stuart Weitzman,2018,3,0.326
+Stuart Weitzman,2019,0,0.0
+Stuart Weitzman,2020,1,0.058
+Stuart Weitzman,2021,2,0.248
+Stuart Weitzman,2022,2,0.059
+Stuart Weitzman,2023,0,0.0
+Stuart Weitzman,2024,0,0.0
