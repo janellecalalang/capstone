@@ -1,7 +1,7 @@
----
 title: "From Coach to Old Navy: a Study on the Effects of Economic Events on Luxury vs. Mass-Market Sales"
 subtitle: "Spring 2025"
 author: "Janelle Calalang"
+
 bibliography: references.bib
 nocite: |
   @*
