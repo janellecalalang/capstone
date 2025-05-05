@@ -1,0 +1,23 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "From Coach to Old Navy"
+  navbar:
+    left:
+      - href: doc/index.qmd
+        text: Home
+  back-to-top-navigation: true
+
+format:
+  html:
+    theme: default
+    toc: true
+    rendering: embed-resources
+    code-fold: true
+    code-tools: true
+
+bibliography: doc/references.bib
+nocite: |
+  @*
