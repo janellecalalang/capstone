@@ -4,18 +4,15 @@ project:
 
 website:
   title: "From Coach to Old Navy"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
 
 format:
   html:
     theme: default
     toc: true
-    rendering: embed-resources
     code-fold: true
     code-tools: true
-
-bibliography: references.bib
-nocite: |
-  @*
-
-resources:
-  - doc/blog.qmd
+    rendering: embed-resources
