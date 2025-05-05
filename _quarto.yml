@@ -6,9 +6,8 @@ website:
   title: "From Coach to Old Navy"
   navbar:
     left:
-      - href: doc/index.qmd
+      - href: blog.qmd
         text: Home
-  back-to-top-navigation: true
 
 format:
   html:
@@ -18,6 +17,9 @@ format:
     code-fold: true
     code-tools: true
 
-bibliography: doc/references.bib
+bibliography: references.bib
 nocite: |
   @*
+
+resources:
+  - doc/blog.qmd
