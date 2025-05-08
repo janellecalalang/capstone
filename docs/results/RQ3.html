@@ -1,0 +1,1913 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.40">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>rq3</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-79108a0fc1995748cbd19a5b0e3e3e7c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body>
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><h1 class="title display-7"></h1></header><div class="quarto-title-block"><div class="quarto-title-tools-only"><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li></ul></div></div>
+
+
+
+
+<div id="f95ae3b1-62a8-4dbe-80dc-6c064ed01cc2" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> pearsonr</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> <span class="st">"/Users/janellemarie/datasets/"</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>sales <span class="op">=</span> pd.read_csv(path <span class="op">+</span> <span class="st">"quarterly_sales.csv"</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>hm_sales <span class="op">=</span> pd.read_csv(path <span class="op">+</span> <span class="st">"hm_quarterly_sales_converted.csv"</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>hm_sales <span class="op">=</span> hm_sales.rename(columns<span class="op">=</span>{<span class="st">"Net Sales (USD Millions)"</span>: <span class="st">"Net Sales ($ Millions)"</span>})</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>combined <span class="op">=</span> pd.concat([sales, hm_sales], ignore_index<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>combined[<span class="st">"Net Sales ($ Millions)"</span>] <span class="op">=</span> combined[<span class="st">"Net Sales ($ Millions)"</span>].astype(<span class="bu">str</span>).<span class="bu">str</span>.replace(<span class="st">","</span>, <span class="st">""</span>).astype(<span class="bu">float</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>combined[<span class="st">"Brand"</span>] <span class="op">=</span> combined[<span class="st">"Brand"</span>].<span class="bu">str</span>.strip().replace(<span class="st">"Gap Inc."</span>, <span class="st">"Gap"</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>quarter_map <span class="op">=</span> {<span class="st">"Q1"</span>: <span class="st">"01"</span>, <span class="st">"Q2"</span>: <span class="st">"04"</span>, <span class="st">"Q3"</span>: <span class="st">"07"</span>, <span class="st">"Q4"</span>: <span class="st">"10"</span>}</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>combined[<span class="st">"Month"</span>] <span class="op">=</span> combined[<span class="st">"Fiscal Quarter"</span>].<span class="bu">map</span>(quarter_map)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>combined[<span class="st">"Date"</span>] <span class="op">=</span> pd.to_datetime(combined[<span class="st">"Year"</span>].astype(<span class="bu">str</span>) <span class="op">+</span> <span class="st">"-"</span> <span class="op">+</span> combined[<span class="st">"Month"</span>] <span class="op">+</span> <span class="st">"-01"</span>)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>monthly_sales <span class="op">=</span> combined.groupby([<span class="st">"Date"</span>, <span class="st">"Brand"</span>])[<span class="st">"Net Sales ($ Millions)"</span>].<span class="bu">sum</span>().reset_index()</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>files <span class="op">=</span> [</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">"abercrombie_search.csv"</span>,</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">"americaneagle_search.csv"</span>,</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">"coach_search.csv"</span>,</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="st">"gap_search.csv"</span>,</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="st">"hm_search.csv"</span>,</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    <span class="st">"katespade_search.csv"</span>,</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">"michaelkors_search.csv"</span>,</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">"stuart_search.csv"</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="bu">file</span> <span class="kw">in</span> files:</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    brand_name <span class="op">=</span> <span class="bu">file</span>.replace(<span class="st">"_search.csv"</span>, <span class="st">""</span>)</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> brand_name <span class="op">==</span> <span class="st">"americaneagle"</span>:</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>        brand_name <span class="op">=</span> <span class="st">"American Eagle"</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> brand_name <span class="op">==</span> <span class="st">"katespade"</span>:</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>        brand_name <span class="op">=</span> <span class="st">"Kate Spade"</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> brand_name <span class="op">==</span> <span class="st">"michaelkors"</span>:</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>        brand_name <span class="op">=</span> <span class="st">"Michael Kors"</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> brand_name <span class="op">==</span> <span class="st">"stuart"</span>:</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>        brand_name <span class="op">=</span> <span class="st">"Stuart Weitzman"</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> brand_name <span class="op">==</span> <span class="st">"hm"</span>:</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>        brand_name <span class="op">=</span> <span class="st">"H&amp;M"</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>        brand_name <span class="op">=</span> brand_name.capitalize()</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>    search <span class="op">=</span> pd.read_csv(path <span class="op">+</span> <span class="bu">file</span>)</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>    search[<span class="st">"Date"</span>] <span class="op">=</span> pd.to_datetime(search[<span class="st">"Date"</span>])</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>    search[<span class="st">"Search Interest"</span>] <span class="op">=</span> pd.to_numeric(search[<span class="st">"Search Interest"</span>], errors<span class="op">=</span><span class="st">"coerce"</span>)</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>    search[<span class="st">"Brand"</span>] <span class="op">=</span> brand_name</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>    merged <span class="op">=</span> pd.merge(search, monthly_sales, on<span class="op">=</span>[<span class="st">"Date"</span>, <span class="st">"Brand"</span>], how<span class="op">=</span><span class="st">"inner"</span>)</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(merged) <span class="op">&gt;=</span> <span class="dv">2</span>:</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>        corr, pval <span class="op">=</span> pearsonr(merged[<span class="st">"Search Interest"</span>], merged[<span class="st">"Net Sales ($ Millions)"</span>])</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>brand_name<span class="sc">}</span><span class="ss">: Correlation = </span><span class="sc">{</span><span class="bu">round</span>(corr, <span class="dv">3</span>)<span class="sc">}</span><span class="ss"> | P-Value = </span><span class="sc">{</span><span class="bu">round</span>(pval, <span class="dv">4</span>)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Abercrombie: Correlation = 0.476 | P-Value = 0.0006
+American Eagle: Correlation = -0.619 | P-Value = 0.0
+Coach: Correlation = -0.162 | P-Value = 0.2658
+Gap: Correlation = 0.311 | P-Value = 0.0299
+H&amp;M: Correlation = 0.457 | P-Value = 0.001
+Kate Spade: Correlation = -0.065 | P-Value = 0.6577
+Michael Kors: Correlation = -0.046 | P-Value = 0.7548
+Stuart Weitzman: Correlation = -0.11 | P-Value = 0.5359</code></pre>
+</div>
+</div>
+<div id="f0abffad-e144-4880-bd58-904ff9dc29fc" class="cell" data-execution_count="8">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install seaborn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Requirement already satisfied: seaborn in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (0.13.2)
+Requirement already satisfied: numpy!=1.24.0,&gt;=1.20 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from seaborn) (2.2.2)
+Requirement already satisfied: pandas&gt;=1.2 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from seaborn) (2.2.3)
+Requirement already satisfied: matplotlib!=3.6.1,&gt;=3.4 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from seaborn) (3.10.0)
+Requirement already satisfied: contourpy&gt;=1.0.1 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (1.3.1)
+Requirement already satisfied: cycler&gt;=0.10 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (0.11.0)
+Requirement already satisfied: fonttools&gt;=4.22.0 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (4.55.3)
+Requirement already satisfied: kiwisolver&gt;=1.3.1 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (1.4.8)
+Requirement already satisfied: packaging&gt;=20.0 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (24.2)
+Requirement already satisfied: pillow&gt;=8 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (11.1.0)
+Requirement already satisfied: pyparsing&gt;=2.3.1 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (3.2.0)
+Requirement already satisfied: python-dateutil&gt;=2.7 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (2.9.0.post0)
+Requirement already satisfied: pytz&gt;=2020.1 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from pandas&gt;=1.2-&gt;seaborn) (2024.1)
+Requirement already satisfied: tzdata&gt;=2022.7 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from pandas&gt;=1.2-&gt;seaborn) (2023.3)
+Requirement already satisfied: six&gt;=1.5 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (1.16.0)</code></pre>
+</div>
+</div>
+<div id="c7dbd015-dbec-417a-8d9d-aa86d206153e" class="cell" data-execution_count="9">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>search_files <span class="op">=</span> [</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"abercrombie_search.csv"</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"americaneagle_search.csv"</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"coach_search.csv"</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"gap_search.csv"</span>,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"hm_search.csv"</span>,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"katespade_search.csv"</span>,</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"michaelkors_search.csv"</span>,</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"stuart_search.csv"</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>search_data_cleaned <span class="op">=</span> []</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="bu">file</span> <span class="kw">in</span> search_files:</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    brand_name <span class="op">=</span> <span class="bu">file</span>.replace(<span class="st">"_search.csv"</span>, <span class="st">""</span>)</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> brand_name <span class="op">==</span> <span class="st">"americaneagle"</span>:</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>        brand_name <span class="op">=</span> <span class="st">"American Eagle"</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> brand_name <span class="op">==</span> <span class="st">"katespade"</span>:</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>        brand_name <span class="op">=</span> <span class="st">"Kate Spade"</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> brand_name <span class="op">==</span> <span class="st">"michaelkors"</span>:</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>        brand_name <span class="op">=</span> <span class="st">"Michael Kors"</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> brand_name <span class="op">==</span> <span class="st">"stuart"</span>:</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>        brand_name <span class="op">=</span> <span class="st">"Stuart Weitzman"</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> brand_name <span class="op">==</span> <span class="st">"hm"</span>:</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>        brand_name <span class="op">=</span> <span class="st">"H&amp;M"</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>        brand_name <span class="op">=</span> brand_name.capitalize()</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> pd.read_csv(path <span class="op">+</span> <span class="bu">file</span>)</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">"Date"</span>] <span class="op">=</span> pd.to_datetime(df[<span class="st">"Date"</span>])</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">"Search Interest"</span>] <span class="op">=</span> pd.to_numeric(df[<span class="st">"Search Interest"</span>], errors<span class="op">=</span><span class="st">"coerce"</span>)</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">"Brand"</span>] <span class="op">=</span> brand_name</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>    search_data_cleaned.append(df)</span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>all_search_data <span class="op">=</span> pd.concat(search_data_cleaned, ignore_index<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>search_sales <span class="op">=</span> pd.merge(all_search_data, monthly_sales, on<span class="op">=</span>[<span class="st">"Date"</span>, <span class="st">"Brand"</span>], how<span class="op">=</span><span class="st">"inner"</span>)</span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>search_sales <span class="op">=</span> search_sales.dropna()</span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">8</span>))</span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>search_sales, x<span class="op">=</span><span class="st">"Search Interest"</span>, y<span class="op">=</span><span class="st">"Net Sales ($ Millions)"</span>, hue<span class="op">=</span><span class="st">"Brand"</span>)</span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Search Interest vs. Sales (All Brands)"</span>)</span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Google Search Interest"</span>)</span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Net Sales ($M)"</span>)</span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="RQ3_files/figure-html/cell-4-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="a8aad6bd-eada-4fab-88b7-da887ae9cfa4" class="cell" data-execution_count="10">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>luxury_brands <span class="op">=</span> [<span class="st">"Coach"</span>, <span class="st">"Kate Spade"</span>, <span class="st">"Stuart Weitzman"</span>, <span class="st">"Michael Kors"</span>]</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>mass_market_brands <span class="op">=</span> [<span class="st">"Abercrombie"</span>, <span class="st">"American Eagle"</span>, <span class="st">"Gap"</span>, <span class="st">"H&amp;M"</span>]</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>search_sales <span class="op">=</span> pd.merge(all_search_data, monthly_sales, on<span class="op">=</span>[<span class="st">"Date"</span>, <span class="st">"Brand"</span>], how<span class="op">=</span><span class="st">"inner"</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>search_sales <span class="op">=</span> search_sales.dropna()</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>search_sales[<span class="st">"Brand Type"</span>] <span class="op">=</span> search_sales[<span class="st">"Brand"</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="st">"Luxury"</span> <span class="cf">if</span> x <span class="kw">in</span> luxury_brands <span class="cf">else</span> <span class="st">"Mass-Market"</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>luxury <span class="op">=</span> search_sales[search_sales[<span class="st">"Brand Type"</span>] <span class="op">==</span> <span class="st">"Luxury"</span>]</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>mass <span class="op">=</span> search_sales[search_sales[<span class="st">"Brand Type"</span>] <span class="op">==</span> <span class="st">"Mass-Market"</span>]</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">16</span>, <span class="dv">6</span>), sharey<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>luxury, x<span class="op">=</span><span class="st">"Search Interest"</span>, y<span class="op">=</span><span class="st">"Net Sales ($ Millions)"</span>, hue<span class="op">=</span><span class="st">"Brand"</span>, ax<span class="op">=</span>axes[<span class="dv">0</span>])</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_title(<span class="st">"Luxury Brands"</span>)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_xlabel(<span class="st">"Search Interest"</span>)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_ylabel(<span class="st">"Net Sales ($M)"</span>)</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>mass, x<span class="op">=</span><span class="st">"Search Interest"</span>, y<span class="op">=</span><span class="st">"Net Sales ($ Millions)"</span>, hue<span class="op">=</span><span class="st">"Brand"</span>, ax<span class="op">=</span>axes[<span class="dv">1</span>])</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_title(<span class="st">"Mass-Market Brands"</span>)</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_xlabel(<span class="st">"Search Interest"</span>)</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_ylabel(<span class="st">""</span>)</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>plt.suptitle(<span class="st">"Search Interest vs. Sales by Brand Category"</span>, fontsize<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="RQ3_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>will just still to correlations bc this looks insane</p>
+<div id="f47d6811-a202-46b4-a139-a0ba554a6514" class="cell" data-execution_count="13">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>pip install textblob</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Collecting textblob
+  Using cached textblob-0.19.0-py3-none-any.whl.metadata (4.4 kB)
+Collecting nltk&gt;=3.9 (from textblob)
+  Using cached nltk-3.9.1-py3-none-any.whl.metadata (2.9 kB)
+Collecting click (from nltk&gt;=3.9-&gt;textblob)
+  Downloading click-8.1.8-py3-none-any.whl.metadata (2.3 kB)
+Requirement already satisfied: joblib in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from nltk&gt;=3.9-&gt;textblob) (1.4.2)
+Collecting regex&gt;=2021.8.3 (from nltk&gt;=3.9-&gt;textblob)
+  Downloading regex-2024.11.6-cp312-cp312-macosx_10_13_x86_64.whl.metadata (40 kB)
+Collecting tqdm (from nltk&gt;=3.9-&gt;textblob)
+  Downloading tqdm-4.67.1-py3-none-any.whl.metadata (57 kB)
+Using cached textblob-0.19.0-py3-none-any.whl (624 kB)
+Using cached nltk-3.9.1-py3-none-any.whl (1.5 MB)
+Downloading regex-2024.11.6-cp312-cp312-macosx_10_13_x86_64.whl (288 kB)
+Downloading click-8.1.8-py3-none-any.whl (98 kB)
+Downloading tqdm-4.67.1-py3-none-any.whl (78 kB)
+Installing collected packages: tqdm, regex, click, nltk, textblob
+Successfully installed click-8.1.8 nltk-3.9.1 regex-2024.11.6 textblob-0.19.0 tqdm-4.67.1
+Note: you may need to restart the kernel to use updated packages.</code></pre>
+</div>
+</div>
+<div id="79f6cb67-d417-413c-8e1c-e2b2041bbd9e" class="cell" data-execution_count="16">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>pip install praw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Collecting praw
+  Downloading praw-7.8.1-py3-none-any.whl.metadata (9.4 kB)
+Collecting prawcore&lt;3,&gt;=2.4 (from praw)
+  Downloading prawcore-2.4.0-py3-none-any.whl.metadata (5.0 kB)
+Collecting update_checker&gt;=0.18 (from praw)
+  Downloading update_checker-0.18.0-py3-none-any.whl.metadata (2.3 kB)
+Requirement already satisfied: websocket-client&gt;=0.54.0 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from praw) (1.8.0)
+Requirement already satisfied: requests&lt;3.0,&gt;=2.6.0 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from prawcore&lt;3,&gt;=2.4-&gt;praw) (2.32.3)
+Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from requests&lt;3.0,&gt;=2.6.0-&gt;prawcore&lt;3,&gt;=2.4-&gt;praw) (3.3.2)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from requests&lt;3.0,&gt;=2.6.0-&gt;prawcore&lt;3,&gt;=2.4-&gt;praw) (3.7)
+Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from requests&lt;3.0,&gt;=2.6.0-&gt;prawcore&lt;3,&gt;=2.4-&gt;praw) (2.3.0)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from requests&lt;3.0,&gt;=2.6.0-&gt;prawcore&lt;3,&gt;=2.4-&gt;praw) (2024.12.14)
+Downloading praw-7.8.1-py3-none-any.whl (189 kB)
+Downloading prawcore-2.4.0-py3-none-any.whl (17 kB)
+Downloading update_checker-0.18.0-py3-none-any.whl (7.0 kB)
+Installing collected packages: update_checker, prawcore, praw
+Successfully installed praw-7.8.1 prawcore-2.4.0 update_checker-0.18.0
+Note: you may need to restart the kernel to use updated packages.</code></pre>
+</div>
+</div>
+<div id="bd0ac242-325c-48df-ada0-76af716a12cc" class="cell" data-execution_count="17">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> praw</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>reddit <span class="op">=</span> praw.Reddit(</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    client_id<span class="op">=</span><span class="st">"8DsIW4DAuPnHNFSqaFj98A"</span>,</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    client_secret<span class="op">=</span><span class="st">"FkL4hqDJc81s5JSo02eoB65eqDCWsw"</span>,</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    user_agent<span class="op">=</span><span class="st">"CapstoneSentimentApp by janellemariie"</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> post <span class="kw">in</span> reddit.subreddit(<span class="st">"femalefashionadvice"</span>).search(<span class="st">"coach bag"</span>, limit<span class="op">=</span><span class="dv">5</span>):</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(post.title)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Where do Coach sit in the tier of nice bags these days?
+“The Logic of Stupid Poor People”-how have you used fashion to navigate classism/racism?
+I spent a month planning a capsule wardobe for a 2 week trip in Asia that I gave up on after 4 days. Album included!
+Your guide to shopping The RealReal — a hot mess consignment website with some amazing gems.
+Found a (very worn) “Coach” bag at the thrift store. Assuming it’s fake, but curious how to tell?</code></pre>
+</div>
+</div>
+<div id="3ae5891e-c6f4-4869-9479-4481e77bc3a0" class="cell" data-execution_count="20">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_brand_sentiment(brand_keyword, subreddit<span class="op">=</span><span class="st">"femalefashionadvice"</span>, year<span class="op">=</span><span class="dv">2021</span>, quarters<span class="op">=</span>[<span class="st">"Q1"</span>, <span class="st">"Q2"</span>]):</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> []</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    quarter_dates <span class="op">=</span> {</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Q1"</span>: (<span class="st">"01-01"</span>, <span class="st">"03-31"</span>),</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Q2"</span>: (<span class="st">"04-01"</span>, <span class="st">"06-30"</span>),</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Q3"</span>: (<span class="st">"07-01"</span>, <span class="st">"09-30"</span>),</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Q4"</span>: (<span class="st">"10-01"</span>, <span class="st">"12-31"</span>),</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> q <span class="kw">in</span> quarters:</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>        after <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>year<span class="sc">}</span><span class="ss">-</span><span class="sc">{</span>quarter_dates[q][<span class="dv">0</span>]<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>        before <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>year<span class="sc">}</span><span class="ss">-</span><span class="sc">{</span>quarter_dates[q][<span class="dv">1</span>]<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>        after_ts <span class="op">=</span> <span class="bu">int</span>(datetime.strptime(after, <span class="st">"%Y-%m-</span><span class="sc">%d</span><span class="st">"</span>).timestamp())</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>        before_ts <span class="op">=</span> <span class="bu">int</span>(datetime.strptime(before, <span class="st">"%Y-%m-</span><span class="sc">%d</span><span class="st">"</span>).timestamp())</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>        posts <span class="op">=</span> reddit.subreddit(subreddit).search(brand_keyword, sort<span class="op">=</span><span class="st">"new"</span>, limit<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>        sentiments <span class="op">=</span> []</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> post <span class="kw">in</span> posts:</span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> after_ts <span class="op">&lt;=</span> post.created_utc <span class="op">&lt;=</span> before_ts:</span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>                text <span class="op">=</span> post.title <span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> (post.selftext <span class="kw">or</span> <span class="st">""</span>)</span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>                score <span class="op">=</span> TextBlob(text).sentiment.polarity</span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>                sentiments.append(score)</span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>        avg_sentiment <span class="op">=</span> <span class="bu">sum</span>(sentiments)<span class="op">/</span><span class="bu">len</span>(sentiments) <span class="cf">if</span> sentiments <span class="cf">else</span> <span class="dv">0</span></span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>        result.append({</span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Brand"</span>: brand_keyword,</span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Quarter"</span>: <span class="ss">f"</span><span class="sc">{</span>year<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>q<span class="sc">}</span><span class="ss">"</span>,</span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Num Posts"</span>: <span class="bu">len</span>(sentiments),</span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Avg Sentiment"</span>: <span class="bu">round</span>(avg_sentiment, <span class="dv">3</span>)</span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>        })</span>
+<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> pd.DataFrame(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="5a3a1abe-7b10-4bf9-8500-b48798af7b66" class="cell" data-execution_count="21">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>coach_df <span class="op">=</span> get_brand_sentiment(<span class="st">"coach bag"</span>, year<span class="op">=</span><span class="dv">2021</span>, quarters<span class="op">=</span>[<span class="st">"Q1"</span>, <span class="st">"Q2"</span>, <span class="st">"Q3"</span>, <span class="st">"Q4"</span>])</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>coach_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="21">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Brand</th>
+<th data-quarto-table-cell-role="th">Quarter</th>
+<th data-quarto-table-cell-role="th">Num Posts</th>
+<th data-quarto-table-cell-role="th">Avg Sentiment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>coach bag</td>
+<td>2021 Q1</td>
+<td>0</td>
+<td>0.000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>coach bag</td>
+<td>2021 Q2</td>
+<td>0</td>
+<td>0.000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>coach bag</td>
+<td>2021 Q3</td>
+<td>2</td>
+<td>0.134</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>coach bag</td>
+<td>2021 Q4</td>
+<td>5</td>
+<td>0.223</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="aca51ed0-6074-44fa-ac63-52706fd8c4b4" class="cell" data-execution_count="26">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_brand_sentiment_yearly(brand_keyword, subreddit<span class="op">=</span><span class="st">"femalefashionadvice"</span>, start_year<span class="op">=</span><span class="dv">2012</span>, end_year<span class="op">=</span><span class="dv">2024</span>):</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    results <span class="op">=</span> []</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> year <span class="kw">in</span> <span class="bu">range</span>(start_year, end_year <span class="op">+</span> <span class="dv">1</span>):</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>        after <span class="op">=</span> <span class="bu">int</span>(datetime(year, <span class="dv">1</span>, <span class="dv">1</span>).timestamp())</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>        before <span class="op">=</span> <span class="bu">int</span>(datetime(year, <span class="dv">12</span>, <span class="dv">31</span>).timestamp())</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>        sentiments <span class="op">=</span> []</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>        post_count <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> post <span class="kw">in</span> reddit.subreddit(subreddit).search(brand_keyword, sort<span class="op">=</span><span class="st">"new"</span>, limit<span class="op">=</span><span class="dv">1000</span>):</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> after <span class="op">&lt;=</span> post.created_utc <span class="op">&lt;=</span> before:</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>                text <span class="op">=</span> post.title <span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> (post.selftext <span class="kw">or</span> <span class="st">""</span>)</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>                score <span class="op">=</span> TextBlob(text).sentiment.polarity</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>                sentiments.append(score)</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>                post_count <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>        avg_sentiment <span class="op">=</span> <span class="bu">sum</span>(sentiments) <span class="op">/</span> <span class="bu">len</span>(sentiments) <span class="cf">if</span> sentiments <span class="cf">else</span> <span class="dv">0</span></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>        results.append({</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Brand"</span>: brand_keyword,</span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Year"</span>: year,</span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Num Posts"</span>: post_count,</span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Avg Sentiment"</span>: <span class="bu">round</span>(avg_sentiment, <span class="dv">3</span>)</span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>        })</span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> pd.DataFrame(results)</span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Your 8 brand search terms</span></span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>brand_keywords <span class="op">=</span> {</span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Abercrombie"</span>: <span class="st">"abercrombie"</span>,</span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>    <span class="st">"American Eagle"</span>: <span class="st">"american eagle"</span>,</span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Coach"</span>: <span class="st">"coach bag"</span>,</span>
+<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Gap"</span>: <span class="st">"gap"</span>,</span>
+<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a>    <span class="st">"H&amp;M"</span>: <span class="st">"h&amp;m"</span>,</span>
+<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Kate Spade"</span>: <span class="st">"kate spade"</span>,</span>
+<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Michael Kors"</span>: <span class="st">"michael kors"</span>,</span>
+<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Stuart Weitzman"</span>: <span class="st">"stuart weitzman"</span></span>
+<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a>all_brand_sentiment <span class="op">=</span> pd.concat([</span>
+<span id="cb15-40"><a href="#cb15-40" aria-hidden="true" tabindex="-1"></a>    get_brand_sentiment_yearly(keyword).assign(Brand<span class="op">=</span>brand)</span>
+<span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> brand, keyword <span class="kw">in</span> brand_keywords.items()</span>
+<span id="cb15-42"><a href="#cb15-42" aria-hidden="true" tabindex="-1"></a>], ignore_index<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb15-43"><a href="#cb15-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-44"><a href="#cb15-44" aria-hidden="true" tabindex="-1"></a>all_brand_sentiment.to_csv(<span class="st">"reddit_sentiment_by_year.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="d1c0ff0b-a018-456a-92f8-1618ee5cca9e" class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_reddit_sentiment_pushshift(keyword, subreddit, start_year<span class="op">=</span><span class="dv">2012</span>, end_year<span class="op">=</span><span class="dv">2024</span>):</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    results <span class="op">=</span> []</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> year <span class="kw">in</span> <span class="bu">range</span>(start_year, end_year <span class="op">+</span> <span class="dv">1</span>):</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>        after <span class="op">=</span> <span class="bu">int</span>(datetime(year, <span class="dv">1</span>, <span class="dv">1</span>).timestamp())</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>        before <span class="op">=</span> <span class="bu">int</span>(datetime(year <span class="op">+</span> <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>).timestamp())</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>        url <span class="op">=</span> <span class="ss">f"https://api.pushshift.io/reddit/search/submission/?q=</span><span class="sc">{</span>keyword<span class="sc">}</span><span class="ss">&amp;subreddit=</span><span class="sc">{</span>subreddit<span class="sc">}</span><span class="ss">&amp;after=</span><span class="sc">{</span>after<span class="sc">}</span><span class="ss">&amp;before=</span><span class="sc">{</span>before<span class="sc">}</span><span class="ss">&amp;size=500"</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>        response <span class="op">=</span> requests.get(url)</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>        data <span class="op">=</span> response.json().get(<span class="st">"data"</span>, [])</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>        sentiments <span class="op">=</span> []</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> post <span class="kw">in</span> data:</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>            text <span class="op">=</span> post.get(<span class="st">"title"</span>, <span class="st">""</span>) <span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> post.get(<span class="st">"selftext"</span>, <span class="st">""</span>)</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>            score <span class="op">=</span> TextBlob(text).sentiment.polarity</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>            sentiments.append(score)</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>        avg_sentiment <span class="op">=</span> <span class="bu">sum</span>(sentiments) <span class="op">/</span> <span class="bu">len</span>(sentiments) <span class="cf">if</span> sentiments <span class="cf">else</span> <span class="dv">0</span></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>        results.append({</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Keyword"</span>: keyword,</span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Subreddit"</span>: subreddit,</span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Year"</span>: year,</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Num Posts"</span>: <span class="bu">len</span>(sentiments),</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Avg Sentiment"</span>: <span class="bu">round</span>(avg_sentiment, <span class="dv">3</span>)</span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>        })</span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>        time.sleep(<span class="fl">1.5</span>)</span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> pd.DataFrame(results)</span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>brand_subreddits <span class="op">=</span> {</span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Abercrombie"</span>: (<span class="st">"abercrombie"</span>, <span class="st">"malefashionadvice"</span>),</span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>    <span class="st">"American Eagle"</span>: (<span class="st">"american eagle"</span>, <span class="st">"malefashionadvice"</span>),</span>
+<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Coach"</span>: (<span class="st">"coach"</span>, <span class="st">"Coach"</span>),</span>
+<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Gap"</span>: (<span class="st">"gap"</span>, <span class="st">"malefashionadvice"</span>),</span>
+<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a>    <span class="st">"H&amp;M"</span>: (<span class="st">"h&amp;m"</span>, <span class="st">"malefashionadvice"</span>),</span>
+<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Kate Spade"</span>: (<span class="st">"kate spade"</span>, <span class="st">"femalefashionadvice"</span>),</span>
+<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Michael Kors"</span>: (<span class="st">"michael kors"</span>, <span class="st">"michaelkors"</span>),</span>
+<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Stuart Weitzman"</span>: (<span class="st">"stuart weitzman"</span>, <span class="st">"femalefashionadvice"</span>)</span>
+<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb16-39"><a href="#cb16-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-40"><a href="#cb16-40" aria-hidden="true" tabindex="-1"></a>all_sentiments <span class="op">=</span> pd.concat([</span>
+<span id="cb16-41"><a href="#cb16-41" aria-hidden="true" tabindex="-1"></a>    get_reddit_sentiment_pushshift(keyword<span class="op">=</span>kw, subreddit<span class="op">=</span>sub)</span>
+<span id="cb16-42"><a href="#cb16-42" aria-hidden="true" tabindex="-1"></a>    .assign(Brand<span class="op">=</span>brand)</span>
+<span id="cb16-43"><a href="#cb16-43" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> brand, (kw, sub) <span class="kw">in</span> brand_subreddits.items()</span>
+<span id="cb16-44"><a href="#cb16-44" aria-hidden="true" tabindex="-1"></a>], ignore_index<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb16-45"><a href="#cb16-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-46"><a href="#cb16-46" aria-hidden="true" tabindex="-1"></a>all_sentiments.to_csv(<span class="st">"reddit_sentiment_by_subreddit.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="903bae2d-f3d9-4ff4-bdef-34b640cf10bf" class="cell" data-execution_count="29">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>yearly_sales <span class="op">=</span> combined.groupby([<span class="st">"Year"</span>, <span class="st">"Brand"</span>])[<span class="st">"Net Sales ($ Millions)"</span>].<span class="bu">sum</span>().reset_index()</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>yearly_sales[<span class="st">"Sales Change (%)"</span>] <span class="op">=</span> yearly_sales.groupby(<span class="st">"Brand"</span>)[<span class="st">"Net Sales ($ Millions)"</span>].pct_change() <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>sentiment <span class="op">=</span> pd.read_csv(path <span class="op">+</span> <span class="st">"femalefashionadvice.csv"</span>)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>merged <span class="op">=</span> pd.merge(sentiment, yearly_sales, on<span class="op">=</span>[<span class="st">"Year"</span>, <span class="st">"Brand"</span>], how<span class="op">=</span><span class="st">"inner"</span>).dropna()</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>brands <span class="op">=</span> merged[<span class="st">"Brand"</span>].unique()</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> brand <span class="kw">in</span> brands:</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> merged[merged[<span class="st">"Brand"</span>] <span class="op">==</span> brand]</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(df) <span class="op">&gt;=</span> <span class="dv">2</span>:</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>        corr, pval <span class="op">=</span> pearsonr(df[<span class="st">"Avg Sentiment"</span>], df[<span class="st">"Sales Change (%)"</span>])</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>brand<span class="sc">}</span><span class="ss">: Correlation = </span><span class="sc">{</span><span class="bu">round</span>(corr, <span class="dv">3</span>)<span class="sc">}</span><span class="ss"> | P-Value = </span><span class="sc">{</span><span class="bu">round</span>(pval, <span class="dv">4</span>)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Abercrombie: Correlation = 0.082 | P-Value = 0.8343
+American Eagle: Correlation = -0.068 | P-Value = 0.8618
+Coach: Correlation = 0.223 | P-Value = 0.5639
+Gap: Correlation = 0.102 | P-Value = 0.7944
+H&amp;M: Correlation = -0.881 | P-Value = 0.0017
+Kate Spade: Correlation = -0.261 | P-Value = 0.498
+Michael Kors: Correlation = 0.214 | P-Value = 0.5808
+Stuart Weitzman: Correlation = 0.069 | P-Value = 0.861</code></pre>
+</div>
+</div>
+<div id="34dc58cf-090d-4371-941a-a087e9003096" class="cell" data-execution_count="32">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_brand_sentiment_by_year(subreddit_name, brand, years<span class="op">=</span><span class="bu">range</span>(<span class="dv">2016</span>, <span class="dv">2024</span>)):</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    results <span class="op">=</span> []</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> year <span class="kw">in</span> years:</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>        start <span class="op">=</span> <span class="bu">int</span>(datetime(year, <span class="dv">1</span>, <span class="dv">1</span>).timestamp())</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>        end <span class="op">=</span> <span class="bu">int</span>(datetime(year <span class="op">+</span> <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>).timestamp())</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span>:</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>            posts <span class="op">=</span> reddit.subreddit(subreddit_name).search(brand, sort<span class="op">=</span><span class="st">"new"</span>, limit<span class="op">=</span><span class="dv">300</span>, params<span class="op">=</span>{<span class="st">"after"</span>: start, <span class="st">"before"</span>: end})</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>            texts <span class="op">=</span> [post.title <span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> post.selftext <span class="cf">for</span> post <span class="kw">in</span> posts <span class="cf">if</span> <span class="bu">hasattr</span>(post, <span class="st">"selftext"</span>)]</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>            sentiments <span class="op">=</span> [TextBlob(text).sentiment.polarity <span class="cf">for</span> text <span class="kw">in</span> texts]</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>            avg_sentiment <span class="op">=</span> <span class="bu">sum</span>(sentiments) <span class="op">/</span> <span class="bu">len</span>(sentiments) <span class="cf">if</span> sentiments <span class="cf">else</span> <span class="dv">0</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>            results.append({</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Brand"</span>: brand,</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Year"</span>: year,</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Num Posts"</span>: <span class="bu">len</span>(sentiments),</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Avg Sentiment"</span>: avg_sentiment</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>            })</span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Error pulling </span><span class="sc">{</span>brand<span class="sc">}</span><span class="ss"> in r/</span><span class="sc">{</span>subreddit_name<span class="sc">}</span><span class="ss"> for </span><span class="sc">{</span>year<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>            results.append({</span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Brand"</span>: brand,</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Year"</span>: year,</span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Num Posts"</span>: <span class="dv">0</span>,</span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Avg Sentiment"</span>: <span class="dv">0</span></span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>            })</span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> results</span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a>all_sentiment_data <span class="op">=</span> []</span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> brand, subreddit <span class="kw">in</span> brand_subreddits.items():</span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a>    brand_data <span class="op">=</span> get_brand_sentiment_by_year(subreddit, brand)</span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a>    all_sentiment_data.extend(brand_data)</span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a>sentiment_df <span class="op">=</span> pd.DataFrame(all_sentiment_data)</span>
+<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-34"><a href="#cb19-34" aria-hidden="true" tabindex="-1"></a>sentiment_df.to_csv(<span class="st">"/Users/janellemarie/datasets/reddit_sentiment_by_year.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb19-35"><a href="#cb19-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-36"><a href="#cb19-36" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sentiment_df.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Error pulling Abercrombie in r/('abercrombie', 'malefashionadvice') for 2016: 'tuple' object has no attribute 'lower'
+Error pulling Abercrombie in r/('abercrombie', 'malefashionadvice') for 2017: 'tuple' object has no attribute 'lower'
+Error pulling Abercrombie in r/('abercrombie', 'malefashionadvice') for 2018: 'tuple' object has no attribute 'lower'
+Error pulling Abercrombie in r/('abercrombie', 'malefashionadvice') for 2019: 'tuple' object has no attribute 'lower'
+Error pulling Abercrombie in r/('abercrombie', 'malefashionadvice') for 2020: 'tuple' object has no attribute 'lower'
+Error pulling Abercrombie in r/('abercrombie', 'malefashionadvice') for 2021: 'tuple' object has no attribute 'lower'
+Error pulling Abercrombie in r/('abercrombie', 'malefashionadvice') for 2022: 'tuple' object has no attribute 'lower'
+Error pulling Abercrombie in r/('abercrombie', 'malefashionadvice') for 2023: 'tuple' object has no attribute 'lower'
+Error pulling American Eagle in r/('american eagle', 'malefashionadvice') for 2016: 'tuple' object has no attribute 'lower'
+Error pulling American Eagle in r/('american eagle', 'malefashionadvice') for 2017: 'tuple' object has no attribute 'lower'
+Error pulling American Eagle in r/('american eagle', 'malefashionadvice') for 2018: 'tuple' object has no attribute 'lower'
+Error pulling American Eagle in r/('american eagle', 'malefashionadvice') for 2019: 'tuple' object has no attribute 'lower'
+Error pulling American Eagle in r/('american eagle', 'malefashionadvice') for 2020: 'tuple' object has no attribute 'lower'
+Error pulling American Eagle in r/('american eagle', 'malefashionadvice') for 2021: 'tuple' object has no attribute 'lower'
+Error pulling American Eagle in r/('american eagle', 'malefashionadvice') for 2022: 'tuple' object has no attribute 'lower'
+Error pulling American Eagle in r/('american eagle', 'malefashionadvice') for 2023: 'tuple' object has no attribute 'lower'
+Error pulling Coach in r/('coach', 'Coach') for 2016: 'tuple' object has no attribute 'lower'
+Error pulling Coach in r/('coach', 'Coach') for 2017: 'tuple' object has no attribute 'lower'
+Error pulling Coach in r/('coach', 'Coach') for 2018: 'tuple' object has no attribute 'lower'
+Error pulling Coach in r/('coach', 'Coach') for 2019: 'tuple' object has no attribute 'lower'
+Error pulling Coach in r/('coach', 'Coach') for 2020: 'tuple' object has no attribute 'lower'
+Error pulling Coach in r/('coach', 'Coach') for 2021: 'tuple' object has no attribute 'lower'
+Error pulling Coach in r/('coach', 'Coach') for 2022: 'tuple' object has no attribute 'lower'
+Error pulling Coach in r/('coach', 'Coach') for 2023: 'tuple' object has no attribute 'lower'
+Error pulling Gap in r/('gap', 'malefashionadvice') for 2016: 'tuple' object has no attribute 'lower'
+Error pulling Gap in r/('gap', 'malefashionadvice') for 2017: 'tuple' object has no attribute 'lower'
+Error pulling Gap in r/('gap', 'malefashionadvice') for 2018: 'tuple' object has no attribute 'lower'
+Error pulling Gap in r/('gap', 'malefashionadvice') for 2019: 'tuple' object has no attribute 'lower'
+Error pulling Gap in r/('gap', 'malefashionadvice') for 2020: 'tuple' object has no attribute 'lower'
+Error pulling Gap in r/('gap', 'malefashionadvice') for 2021: 'tuple' object has no attribute 'lower'
+Error pulling Gap in r/('gap', 'malefashionadvice') for 2022: 'tuple' object has no attribute 'lower'
+Error pulling Gap in r/('gap', 'malefashionadvice') for 2023: 'tuple' object has no attribute 'lower'
+Error pulling H&amp;M in r/('h&amp;m', 'malefashionadvice') for 2016: 'tuple' object has no attribute 'lower'
+Error pulling H&amp;M in r/('h&amp;m', 'malefashionadvice') for 2017: 'tuple' object has no attribute 'lower'
+Error pulling H&amp;M in r/('h&amp;m', 'malefashionadvice') for 2018: 'tuple' object has no attribute 'lower'
+Error pulling H&amp;M in r/('h&amp;m', 'malefashionadvice') for 2019: 'tuple' object has no attribute 'lower'
+Error pulling H&amp;M in r/('h&amp;m', 'malefashionadvice') for 2020: 'tuple' object has no attribute 'lower'
+Error pulling H&amp;M in r/('h&amp;m', 'malefashionadvice') for 2021: 'tuple' object has no attribute 'lower'
+Error pulling H&amp;M in r/('h&amp;m', 'malefashionadvice') for 2022: 'tuple' object has no attribute 'lower'
+Error pulling H&amp;M in r/('h&amp;m', 'malefashionadvice') for 2023: 'tuple' object has no attribute 'lower'
+Error pulling Kate Spade in r/('kate spade', 'femalefashionadvice') for 2016: 'tuple' object has no attribute 'lower'
+Error pulling Kate Spade in r/('kate spade', 'femalefashionadvice') for 2017: 'tuple' object has no attribute 'lower'
+Error pulling Kate Spade in r/('kate spade', 'femalefashionadvice') for 2018: 'tuple' object has no attribute 'lower'
+Error pulling Kate Spade in r/('kate spade', 'femalefashionadvice') for 2019: 'tuple' object has no attribute 'lower'
+Error pulling Kate Spade in r/('kate spade', 'femalefashionadvice') for 2020: 'tuple' object has no attribute 'lower'
+Error pulling Kate Spade in r/('kate spade', 'femalefashionadvice') for 2021: 'tuple' object has no attribute 'lower'
+Error pulling Kate Spade in r/('kate spade', 'femalefashionadvice') for 2022: 'tuple' object has no attribute 'lower'
+Error pulling Kate Spade in r/('kate spade', 'femalefashionadvice') for 2023: 'tuple' object has no attribute 'lower'
+Error pulling Michael Kors in r/('michael kors', 'michaelkors') for 2016: 'tuple' object has no attribute 'lower'
+Error pulling Michael Kors in r/('michael kors', 'michaelkors') for 2017: 'tuple' object has no attribute 'lower'
+Error pulling Michael Kors in r/('michael kors', 'michaelkors') for 2018: 'tuple' object has no attribute 'lower'
+Error pulling Michael Kors in r/('michael kors', 'michaelkors') for 2019: 'tuple' object has no attribute 'lower'
+Error pulling Michael Kors in r/('michael kors', 'michaelkors') for 2020: 'tuple' object has no attribute 'lower'
+Error pulling Michael Kors in r/('michael kors', 'michaelkors') for 2021: 'tuple' object has no attribute 'lower'
+Error pulling Michael Kors in r/('michael kors', 'michaelkors') for 2022: 'tuple' object has no attribute 'lower'
+Error pulling Michael Kors in r/('michael kors', 'michaelkors') for 2023: 'tuple' object has no attribute 'lower'
+Error pulling Stuart Weitzman in r/('stuart weitzman', 'femalefashionadvice') for 2016: 'tuple' object has no attribute 'lower'
+Error pulling Stuart Weitzman in r/('stuart weitzman', 'femalefashionadvice') for 2017: 'tuple' object has no attribute 'lower'
+Error pulling Stuart Weitzman in r/('stuart weitzman', 'femalefashionadvice') for 2018: 'tuple' object has no attribute 'lower'
+Error pulling Stuart Weitzman in r/('stuart weitzman', 'femalefashionadvice') for 2019: 'tuple' object has no attribute 'lower'
+Error pulling Stuart Weitzman in r/('stuart weitzman', 'femalefashionadvice') for 2020: 'tuple' object has no attribute 'lower'
+Error pulling Stuart Weitzman in r/('stuart weitzman', 'femalefashionadvice') for 2021: 'tuple' object has no attribute 'lower'
+Error pulling Stuart Weitzman in r/('stuart weitzman', 'femalefashionadvice') for 2022: 'tuple' object has no attribute 'lower'
+Error pulling Stuart Weitzman in r/('stuart weitzman', 'femalefashionadvice') for 2023: 'tuple' object has no attribute 'lower'
+         Brand  Year  Num Posts  Avg Sentiment
+0  Abercrombie  2016          0              0
+1  Abercrombie  2017          0              0
+2  Abercrombie  2018          0              0
+3  Abercrombie  2019          0              0
+4  Abercrombie  2020          0              0</code></pre>
+</div>
+</div>
+<div id="e8cdf36a-1210-4ada-86e9-e17eacdfa581" class="cell" data-execution_count="33">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>yearly_sales <span class="op">=</span> combined.groupby([<span class="st">"Year"</span>, <span class="st">"Brand"</span>])[<span class="st">"Net Sales ($ Millions)"</span>].<span class="bu">sum</span>().reset_index()</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>yearly_sales[<span class="st">"Sales Change (%)"</span>] <span class="op">=</span> yearly_sales.groupby(<span class="st">"Brand"</span>)[<span class="st">"Net Sales ($ Millions)"</span>].pct_change() <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>sentiment <span class="op">=</span> pd.read_csv(path <span class="op">+</span> <span class="st">"reddit_sentiment_by_year.csv"</span>)</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>merged <span class="op">=</span> pd.merge(sentiment, yearly_sales, on<span class="op">=</span>[<span class="st">"Year"</span>, <span class="st">"Brand"</span>], how<span class="op">=</span><span class="st">"inner"</span>).dropna()</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>brands <span class="op">=</span> merged[<span class="st">"Brand"</span>].unique()</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> brand <span class="kw">in</span> brands:</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> merged[merged[<span class="st">"Brand"</span>] <span class="op">==</span> brand]</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(df) <span class="op">&gt;=</span> <span class="dv">2</span>:</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>        corr, pval <span class="op">=</span> pearsonr(df[<span class="st">"Avg Sentiment"</span>], df[<span class="st">"Sales Change (%)"</span>])</span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>brand<span class="sc">}</span><span class="ss">: Correlation = </span><span class="sc">{</span><span class="bu">round</span>(corr, <span class="dv">3</span>)<span class="sc">}</span><span class="ss"> | P-Value = </span><span class="sc">{</span><span class="bu">round</span>(pval, <span class="dv">4</span>)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Abercrombie: Correlation = 0.183 | P-Value = 0.5695
+American Eagle: Correlation = -0.031 | P-Value = 0.9249
+Coach: Correlation = 0.16 | P-Value = 0.6186
+Gap: Correlation = 0.089 | P-Value = 0.7825
+H&amp;M: Correlation = -0.696 | P-Value = 0.0119
+Kate Spade: Correlation = -0.213 | P-Value = 0.5059
+Michael Kors: Correlation = 0.338 | P-Value = 0.2823
+Stuart Weitzman: Correlation = 0.069 | P-Value = 0.861</code></pre>
+</div>
+</div>
+<div id="7c123e7c-f161-4c87-88e7-992ca2fd2bc1" class="cell" data-execution_count="39">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>yearly_sales <span class="op">=</span> combined.groupby([<span class="st">"Year"</span>, <span class="st">"Brand"</span>])[<span class="st">"Net Sales ($ Millions)"</span>].<span class="bu">sum</span>().reset_index()</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>yearly_sales[<span class="st">"Sales Change (%)"</span>] <span class="op">=</span> yearly_sales.groupby(<span class="st">"Brand"</span>)[<span class="st">"Net Sales ($ Millions)"</span>].pct_change() <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>sentiment <span class="op">=</span> pd.read_csv(path <span class="op">+</span> <span class="st">"reddit_sentiment_by_year.csv"</span>)</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>merged <span class="op">=</span> pd.merge(sentiment, yearly_sales, on<span class="op">=</span>[<span class="st">"Year"</span>, <span class="st">"Brand"</span>], how<span class="op">=</span><span class="st">"inner"</span>).dropna()</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>election_years <span class="op">=</span> [<span class="dv">2016</span>, <span class="dv">2020</span>, <span class="dv">2024</span>]</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>filtered <span class="op">=</span> merged[merged[<span class="st">"Year"</span>].isin(election_years)]</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> []</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> brand <span class="kw">in</span> filtered[<span class="st">"Brand"</span>].unique():</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> filtered[filtered[<span class="st">"Brand"</span>] <span class="op">==</span> brand]</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(df) <span class="op">&gt;=</span> <span class="dv">2</span>:</span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>        corr, pval <span class="op">=</span> pearsonr(df[<span class="st">"Avg Sentiment"</span>], df[<span class="st">"Sales Change (%)"</span>])</span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>        results.append({</span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Brand"</span>: brand,</span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Correlation"</span>: <span class="bu">round</span>(corr, <span class="dv">3</span>),</span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>            <span class="st">"P-Value"</span>: <span class="bu">round</span>(pval, <span class="dv">4</span>),</span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Years Analyzed"</span>: <span class="bu">len</span>(df)</span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>        })</span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a>results_df <span class="op">=</span> pd.DataFrame(results)</span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>results_df.to_csv(path <span class="op">+</span> <span class="st">"reddit_correlation_election_years.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(results_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>             Brand  Correlation  P-Value  Years Analyzed
+0      Abercrombie        0.696   0.5099               3
+1   American Eagle       -0.079   0.9496               3
+2            Coach       -0.913   0.2673               3
+3              Gap        0.430   0.7172               3
+4              H&amp;M       -0.942   0.2184               3
+5       Kate Spade        0.148   0.9052               3
+6     Michael Kors        0.791   0.4191               3
+7  Stuart Weitzman        0.794   0.4159               3</code></pre>
+</div>
+</div>
+<div id="d2eb5083-18ba-466f-8409-a66e3f76934c" class="cell" data-execution_count="50">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> <span class="st">"/Users/janellemarie/datasets/"</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>cpi <span class="op">=</span> pd.read_csv(path <span class="op">+</span> <span class="st">"MEDCPI.csv"</span>)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>cpi[<span class="st">"Date"</span>] <span class="op">=</span> pd.to_datetime(cpi[<span class="st">"observation_date"</span>])</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>cpi <span class="op">=</span> cpi.rename(columns<span class="op">=</span>{<span class="st">"MEDCPIM158SFRBCLE"</span>: <span class="st">"Median CPI"</span>})</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>cpi_yearly <span class="op">=</span> cpi.set_index(<span class="st">"Date"</span>)[<span class="st">"Median CPI"</span>].resample(<span class="st">"Y"</span>).mean().reset_index()</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>cpi_yearly[<span class="st">"Year"</span>] <span class="op">=</span> cpi_yearly[<span class="st">"Date"</span>].dt.year</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>cpi_yearly <span class="op">=</span> cpi_yearly[[<span class="st">"Year"</span>, <span class="st">"Median CPI"</span>]]</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>merged <span class="op">=</span> pd.merge(grouped_sales, cpi_yearly, on<span class="op">=</span><span class="st">"Year"</span>, how<span class="op">=</span><span class="st">"inner"</span>)</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>plt.plot(merged[<span class="st">"Year"</span>], merged[<span class="st">"Luxury"</span>], label<span class="op">=</span><span class="st">"Luxury Sales ($M)"</span>, marker<span class="op">=</span><span class="st">"o"</span>)</span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>plt.plot(merged[<span class="st">"Year"</span>], merged[<span class="st">"Mass-Market"</span>], label<span class="op">=</span><span class="st">"Mass-Market Sales ($M)"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, marker<span class="op">=</span><span class="st">"o"</span>)</span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>plt.plot(merged[<span class="st">"Year"</span>], merged[<span class="st">"Median CPI"</span>] <span class="op">*</span> <span class="dv">1000</span>, label<span class="op">=</span><span class="st">"Median CPI (scaled)"</span>, linestyle<span class="op">=</span><span class="st">"-."</span>, color<span class="op">=</span><span class="st">"gray"</span>)</span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Annotated Events</span></span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>events <span class="op">=</span> {</span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2012</span>: <span class="st">"2012 Election"</span>,</span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2016</span>: <span class="st">"2016 Election"</span>,</span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2020</span>: <span class="st">"COVID-19 &amp; 2020 Election"</span>,</span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2022</span>: <span class="st">"Inflation Surge"</span>,</span>
+<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2024</span>: <span class="st">"2024 Election"</span></span>
+<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> year, label <span class="kw">in</span> events.items():</span>
+<span id="cb25-28"><a href="#cb25-28" aria-hidden="true" tabindex="-1"></a>    plt.axvline(x<span class="op">=</span>year, color<span class="op">=</span><span class="st">"gray"</span>, linestyle<span class="op">=</span><span class="st">":"</span>, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
+<span id="cb25-29"><a href="#cb25-29" aria-hidden="true" tabindex="-1"></a>    plt.text(year, plt.ylim()[<span class="dv">1</span>]<span class="op">*</span><span class="fl">0.75</span>, label, rotation<span class="op">=</span><span class="dv">45</span>, ha<span class="op">=</span><span class="st">"right"</span>, fontsize<span class="op">=</span><span class="dv">9</span>)</span>
+<span id="cb25-30"><a href="#cb25-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-31"><a href="#cb25-31" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Luxury vs. Mass-Market Sales &amp; Inflation (Median CPI)"</span>)</span>
+<span id="cb25-32"><a href="#cb25-32" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Year"</span>)</span>
+<span id="cb25-33"><a href="#cb25-33" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Sales ($M) / CPI (scaled)"</span>)</span>
+<span id="cb25-34"><a href="#cb25-34" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb25-35"><a href="#cb25-35" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb25-36"><a href="#cb25-36" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb25-37"><a href="#cb25-37" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>/var/folders/fc/6pfhghc91czgj9kdp_1f19dc0000gn/T/ipykernel_19081/2397279174.py:7: FutureWarning: 'Y' is deprecated and will be removed in a future version, please use 'YE' instead.
+  cpi_yearly = cpi.set_index("Date")["Median CPI"].resample("Y").mean().reset_index()</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="RQ3_files/figure-html/cell-17-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="f8bff3ff-4c2e-46da-aa7f-f219cebadef4" class="cell" data-execution_count="56">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">6</span>))</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>luxury, x<span class="op">=</span><span class="st">"Median CPI"</span>, y<span class="op">=</span><span class="st">"Sales Change (%)"</span>, hue<span class="op">=</span><span class="st">"Brand"</span>)</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>sns.regplot(data<span class="op">=</span>luxury, x<span class="op">=</span><span class="st">"Median CPI"</span>, y<span class="op">=</span><span class="st">"Sales Change (%)"</span>, scatter<span class="op">=</span><span class="va">False</span>, color<span class="op">=</span><span class="st">"black"</span>, ci<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Luxury Brands: Sales % Change vs Median CPI"</span>)</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>mass, x<span class="op">=</span><span class="st">"Median CPI"</span>, y<span class="op">=</span><span class="st">"Sales Change (%)"</span>, hue<span class="op">=</span><span class="st">"Brand"</span>)</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>sns.regplot(data<span class="op">=</span>mass, x<span class="op">=</span><span class="st">"Median CPI"</span>, y<span class="op">=</span><span class="st">"Sales Change (%)"</span>, scatter<span class="op">=</span><span class="va">False</span>, color<span class="op">=</span><span class="st">"black"</span>, ci<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Mass-Market Brands: Sales % Change vs Median CPI"</span>)</span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="RQ3_files/figure-html/cell-18-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="3d3881e6-a8d6-4e8b-9333-c3ccf3ebc20d" class="cell" data-execution_count="62">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> <span class="st">"/Users/janellemarie/datasets/"</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>gdp <span class="op">=</span> pd.read_csv(path <span class="op">+</span> <span class="st">"GDP_growth.csv"</span>)</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>gdp <span class="op">=</span> gdp.rename(columns<span class="op">=</span>{<span class="st">"observation_date"</span>: <span class="st">"Date"</span>, <span class="st">"A191RL1Q225SBEA"</span>: <span class="st">"GDP"</span>})</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>gdp[<span class="st">"Year"</span>] <span class="op">=</span> pd.to_datetime(gdp[<span class="st">"Date"</span>]).dt.year</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>gdp <span class="op">=</span> gdp.groupby(<span class="st">"Year"</span>)[<span class="st">"GDP"</span>].mean().reset_index()</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>merged <span class="op">=</span> pd.merge(sales, gdp, on<span class="op">=</span><span class="st">"Year"</span>, how<span class="op">=</span><span class="st">"inner"</span>)</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>luxury <span class="op">=</span> merged[merged[<span class="st">"Luxury or Mass-Market"</span>] <span class="op">==</span> <span class="st">"Luxury"</span>]</span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>mass <span class="op">=</span> merged[merged[<span class="st">"Luxury or Mass-Market"</span>] <span class="op">==</span> <span class="st">"Mass-Market"</span>]</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">6</span>))</span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>luxury, x<span class="op">=</span><span class="st">"GDP"</span>, y<span class="op">=</span><span class="st">"Sales Change (%)"</span>, hue<span class="op">=</span><span class="st">"Brand"</span>)</span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>z_lux <span class="op">=</span> np.polyfit(luxury[<span class="st">"GDP"</span>], luxury[<span class="st">"Sales Change (%)"</span>], <span class="dv">1</span>)</span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a>plt.plot(luxury[<span class="st">"GDP"</span>], np.poly1d(z_lux)(luxury[<span class="st">"GDP"</span>]), color<span class="op">=</span><span class="st">"black"</span>)</span>
+<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Luxury Brands: Sales % Change vs GDP Growth"</span>)</span>
+<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-24"><a href="#cb28-24" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb28-25"><a href="#cb28-25" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>mass, x<span class="op">=</span><span class="st">"GDP"</span>, y<span class="op">=</span><span class="st">"Sales Change (%)"</span>, hue<span class="op">=</span><span class="st">"Brand"</span>)</span>
+<span id="cb28-26"><a href="#cb28-26" aria-hidden="true" tabindex="-1"></a>z_mass <span class="op">=</span> np.polyfit(mass[<span class="st">"GDP"</span>], mass[<span class="st">"Sales Change (%)"</span>], <span class="dv">1</span>)</span>
+<span id="cb28-27"><a href="#cb28-27" aria-hidden="true" tabindex="-1"></a>plt.plot(mass[<span class="st">"GDP"</span>], np.poly1d(z_mass)(mass[<span class="st">"GDP"</span>]), color<span class="op">=</span><span class="st">"black"</span>)</span>
+<span id="cb28-28"><a href="#cb28-28" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Mass-Market Brands: Sales % Change vs GDP Growth"</span>)</span>
+<span id="cb28-29"><a href="#cb28-29" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb28-30"><a href="#cb28-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-31"><a href="#cb28-31" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb28-32"><a href="#cb28-32" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="RQ3_files/figure-html/cell-19-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="7d4a848d-ae85-4de5-9c9f-aa11d92eda16" class="cell" data-execution_count="63">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>merged <span class="op">=</span> pd.merge(sales, cpi_yearly, on<span class="op">=</span><span class="st">"Year"</span>, how<span class="op">=</span><span class="st">"inner"</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">8</span>))</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>merged,</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">"Median CPI"</span>,</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">"Sales Change (%)"</span>,</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>    size<span class="op">=</span><span class="st">"Net Sales ($ Millions)"</span>,</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>    hue<span class="op">=</span><span class="st">"Luxury or Mass-Market"</span>,</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>    alpha<span class="op">=</span><span class="fl">0.6</span>,</span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>    sizes<span class="op">=</span>(<span class="dv">50</span>, <span class="dv">1000</span>)</span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Bubble Plot: Sales Change vs Median CPI</span><span class="ch">\n</span><span class="st">(Bubble Size = Net Sales Volume)"</span>)</span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Median CPI"</span>)</span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Sales Change (%)"</span>)</span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>plt.legend(bbox_to_anchor<span class="op">=</span>(<span class="fl">1.05</span>, <span class="dv">1</span>), loc<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="RQ3_files/figure-html/cell-20-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="d50eb998-c9e8-49aa-ad80-ed6b96c7ad75" class="cell" data-execution_count="73">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>sales_summary <span class="op">=</span> sales.groupby([<span class="st">"Year"</span>, <span class="st">"Luxury or Mass-Market"</span>])[<span class="st">"Net Sales ($ Millions)"</span>].<span class="bu">sum</span>().unstack().reset_index()</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>merged <span class="op">=</span> pd.merge(sales_summary, cpi, on<span class="op">=</span><span class="st">"Year"</span>, how<span class="op">=</span><span class="st">"inner"</span>)</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>fig, ax1 <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>ax1.plot(merged[<span class="st">"Year"</span>], merged[<span class="st">"Luxury"</span>], color<span class="op">=</span><span class="st">'orange'</span>, marker<span class="op">=</span><span class="st">'o'</span>, label<span class="op">=</span><span class="st">'Luxury Sales ($M)'</span>)</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>ax1.plot(merged[<span class="st">"Year"</span>], merged[<span class="st">"Mass-Market"</span>], color<span class="op">=</span><span class="st">'orangered'</span>, marker<span class="op">=</span><span class="st">'o'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, label<span class="op">=</span><span class="st">'Mass-Market Sales ($M)'</span>)</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>ax1.set_ylabel(<span class="st">"Sales ($M)"</span>, color<span class="op">=</span><span class="st">'darkred'</span>)</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>ax1.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, labelcolor<span class="op">=</span><span class="st">'darkred'</span>)</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>ax1.set_xlabel(<span class="st">"Year"</span>)</span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="st">"Luxury vs. Mass-Market Sales &amp; Inflation"</span>)</span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> ax1.twinx()</span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>ax2.plot(merged[<span class="st">"Year"</span>], merged[<span class="st">"CPI"</span>], color<span class="op">=</span><span class="st">'gray'</span>, linestyle<span class="op">=</span><span class="st">'-.'</span>, marker<span class="op">=</span><span class="st">'x'</span>, label<span class="op">=</span><span class="st">'Median CPI'</span>)</span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>ax2.set_ylabel(<span class="st">"Median CPI"</span>, color<span class="op">=</span><span class="st">'gray'</span>)</span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a>ax2.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, labelcolor<span class="op">=</span><span class="st">'gray'</span>)</span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a>events <span class="op">=</span> {</span>
+<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2012</span>: <span class="st">"2012 Election"</span>,</span>
+<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2016</span>: <span class="st">"2016 Election"</span>,</span>
+<span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2020</span>: <span class="st">"2020 Election</span><span class="ch">\n</span><span class="st">&amp; COVID-19"</span>,</span>
+<span id="cb30-23"><a href="#cb30-23" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2022</span>: <span class="st">"Inflation Surge"</span>,</span>
+<span id="cb30-24"><a href="#cb30-24" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2024</span>: <span class="st">"2024 Election"</span></span>
+<span id="cb30-25"><a href="#cb30-25" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb30-26"><a href="#cb30-26" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> year, label <span class="kw">in</span> events.items():</span>
+<span id="cb30-27"><a href="#cb30-27" aria-hidden="true" tabindex="-1"></a>    ax1.axvline(x<span class="op">=</span>year, color<span class="op">=</span><span class="st">'gray'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb30-28"><a href="#cb30-28" aria-hidden="true" tabindex="-1"></a>    ax1.annotate(label,</span>
+<span id="cb30-29"><a href="#cb30-29" aria-hidden="true" tabindex="-1"></a>                 xy<span class="op">=</span>(year, ax1.get_ylim()[<span class="dv">1</span>] <span class="op">*</span> <span class="fl">0.85</span>),</span>
+<span id="cb30-30"><a href="#cb30-30" aria-hidden="true" tabindex="-1"></a>                 rotation<span class="op">=</span><span class="dv">45</span>,</span>
+<span id="cb30-31"><a href="#cb30-31" aria-hidden="true" tabindex="-1"></a>                 ha<span class="op">=</span><span class="st">'right'</span>,</span>
+<span id="cb30-32"><a href="#cb30-32" aria-hidden="true" tabindex="-1"></a>                 va<span class="op">=</span><span class="st">'center'</span>,</span>
+<span id="cb30-33"><a href="#cb30-33" aria-hidden="true" tabindex="-1"></a>                 fontsize<span class="op">=</span><span class="dv">8</span>,</span>
+<span id="cb30-34"><a href="#cb30-34" aria-hidden="true" tabindex="-1"></a>                 color<span class="op">=</span><span class="st">'black'</span>)</span>
+<span id="cb30-35"><a href="#cb30-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-36"><a href="#cb30-36" aria-hidden="true" tabindex="-1"></a>lines1, labels1 <span class="op">=</span> ax1.get_legend_handles_labels()</span>
+<span id="cb30-37"><a href="#cb30-37" aria-hidden="true" tabindex="-1"></a>lines2, labels2 <span class="op">=</span> ax2.get_legend_handles_labels()</span>
+<span id="cb30-38"><a href="#cb30-38" aria-hidden="true" tabindex="-1"></a>ax1.legend(lines1 <span class="op">+</span> lines2, labels1 <span class="op">+</span> labels2, loc<span class="op">=</span><span class="st">'lower center'</span>, bbox_to_anchor<span class="op">=</span>(<span class="fl">0.5</span>, <span class="op">-</span><span class="fl">0.25</span>), ncol<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb30-39"><a href="#cb30-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-40"><a href="#cb30-40" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb30-41"><a href="#cb30-41" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="RQ3_files/figure-html/cell-21-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="0eeb0dbd-2506-43c8-99d4-197b22c93af9" class="cell" data-execution_count="81">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>quarterly_sales <span class="op">=</span> pd.read_csv(<span class="st">"/Users/janellemarie/datasets/quarterly_sales.csv"</span>)</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>hm_sales <span class="op">=</span> pd.read_csv(<span class="st">"/Users/janellemarie/datasets/hm_quarterly_sales_converted.csv"</span>)</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>gdp <span class="op">=</span> pd.read_csv(<span class="st">"/Users/janellemarie/datasets/GDP_growth.csv"</span>)</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>cpi <span class="op">=</span> pd.read_csv(<span class="st">"/Users/janellemarie/datasets/MEDCPI.csv"</span>)</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>gdp <span class="op">=</span> gdp.rename(columns<span class="op">=</span>{<span class="st">"observation_date"</span>: <span class="st">"Date"</span>, <span class="st">"A191RL1Q225SBEA"</span>: <span class="st">"GDP"</span>})</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>gdp[<span class="st">"Quarter"</span>] <span class="op">=</span> pd.to_datetime(gdp[<span class="st">"Date"</span>]).dt.to_period(<span class="st">"Q"</span>)</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>cpi <span class="op">=</span> cpi.rename(columns<span class="op">=</span>{<span class="st">"observation_date"</span>: <span class="st">"Date"</span>, <span class="st">"MEDCPIM158SFRBCLE"</span>: <span class="st">"CPI"</span>})</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>cpi[<span class="st">"Quarter"</span>] <span class="op">=</span> pd.to_datetime(cpi[<span class="st">"Date"</span>]).dt.to_period(<span class="st">"Q"</span>)</span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>cpi <span class="op">=</span> cpi.groupby(<span class="st">"Quarter"</span>)[<span class="st">"CPI"</span>].mean().reset_index()</span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>merged <span class="op">=</span> quarterly_sales.copy()</span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>merged.rename(columns<span class="op">=</span>{<span class="st">"Fiscal Quarter"</span>: <span class="st">"Quarter"</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>merged[<span class="st">"Quarter"</span>] <span class="op">=</span> merged[<span class="st">"Year"</span>].astype(<span class="bu">str</span>) <span class="op">+</span> merged[<span class="st">"Quarter"</span>]</span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a>merged[<span class="st">"Quarter"</span>] <span class="op">=</span> pd.PeriodIndex(merged[<span class="st">"Quarter"</span>], freq<span class="op">=</span><span class="st">"Q"</span>)</span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a>merged <span class="op">=</span> merged.merge(gdp[[<span class="st">"Quarter"</span>, <span class="st">"GDP"</span>]], on<span class="op">=</span><span class="st">"Quarter"</span>, how<span class="op">=</span><span class="st">"left"</span>)</span>
+<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a>merged <span class="op">=</span> merged.merge(cpi, on<span class="op">=</span><span class="st">"Quarter"</span>, how<span class="op">=</span><span class="st">"left"</span>)</span>
+<span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a>election_quarters <span class="op">=</span> [<span class="st">'2012Q4'</span>, <span class="st">'2016Q4'</span>, <span class="st">'2020Q4'</span>, <span class="st">'2024Q4'</span>]</span>
+<span id="cb31-24"><a href="#cb31-24" aria-hidden="true" tabindex="-1"></a>merged[<span class="st">'Election_Quarter'</span>] <span class="op">=</span> merged[<span class="st">'Quarter'</span>].astype(<span class="bu">str</span>).isin(election_quarters)</span>
+<span id="cb31-25"><a href="#cb31-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-26"><a href="#cb31-26" aria-hidden="true" tabindex="-1"></a>merged[<span class="st">'Net Sales ($ Millions)'</span>] <span class="op">=</span> pd.to_numeric(merged[<span class="st">'Net Sales ($ Millions)'</span>], errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
+<span id="cb31-27"><a href="#cb31-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-28"><a href="#cb31-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-29"><a href="#cb31-29" aria-hidden="true" tabindex="-1"></a>sns.<span class="bu">set</span>(style<span class="op">=</span><span class="st">"whitegrid"</span>)</span>
+<span id="cb31-30"><a href="#cb31-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-31"><a href="#cb31-31" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">18</span>, <span class="dv">6</span>), sharex<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb31-32"><a href="#cb31-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-33"><a href="#cb31-33" aria-hidden="true" tabindex="-1"></a>sns.boxplot(x<span class="op">=</span><span class="st">'Election_Quarter'</span>, y<span class="op">=</span><span class="st">'GDP'</span>, data<span class="op">=</span>merged, ax<span class="op">=</span>axes[<span class="dv">0</span>])</span>
+<span id="cb31-34"><a href="#cb31-34" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_title(<span class="st">"GDP by Election vs. Non-Election Quarters"</span>)</span>
+<span id="cb31-35"><a href="#cb31-35" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_xlabel(<span class="st">""</span>)</span>
+<span id="cb31-36"><a href="#cb31-36" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_ylabel(<span class="st">"GDP (Billions)"</span>)</span>
+<span id="cb31-37"><a href="#cb31-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-38"><a href="#cb31-38" aria-hidden="true" tabindex="-1"></a>sns.boxplot(x<span class="op">=</span><span class="st">'Election_Quarter'</span>, y<span class="op">=</span><span class="st">'CPI'</span>, data<span class="op">=</span>merged, ax<span class="op">=</span>axes[<span class="dv">1</span>])</span>
+<span id="cb31-39"><a href="#cb31-39" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_title(<span class="st">"CPI by Election vs. Non-Election Quarters"</span>)</span>
+<span id="cb31-40"><a href="#cb31-40" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_xlabel(<span class="st">""</span>)</span>
+<span id="cb31-41"><a href="#cb31-41" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_ylabel(<span class="st">"Median CPI"</span>)</span>
+<span id="cb31-42"><a href="#cb31-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-43"><a href="#cb31-43" aria-hidden="true" tabindex="-1"></a>sns.boxplot(x<span class="op">=</span><span class="st">'Election_Quarter'</span>, y<span class="op">=</span><span class="st">'Net Sales ($ Millions)'</span>, data<span class="op">=</span>merged, ax<span class="op">=</span>axes[<span class="dv">2</span>])</span>
+<span id="cb31-44"><a href="#cb31-44" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">2</span>].set_title(<span class="st">"Sales by Election vs. Non-Election Quarters"</span>)</span>
+<span id="cb31-45"><a href="#cb31-45" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">2</span>].set_xlabel(<span class="st">""</span>)</span>
+<span id="cb31-46"><a href="#cb31-46" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">2</span>].set_ylabel(<span class="st">"Net Sales ($M)"</span>)</span>
+<span id="cb31-47"><a href="#cb31-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-48"><a href="#cb31-48" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax <span class="kw">in</span> axes:</span>
+<span id="cb31-49"><a href="#cb31-49" aria-hidden="true" tabindex="-1"></a>    ax.set_xticks([<span class="dv">0</span>, <span class="dv">1</span>])</span>
+<span id="cb31-50"><a href="#cb31-50" aria-hidden="true" tabindex="-1"></a>    ax.set_xticklabels([<span class="st">'Non-Election'</span>, <span class="st">'Election'</span>])</span>
+<span id="cb31-51"><a href="#cb31-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-52"><a href="#cb31-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-53"><a href="#cb31-53" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb31-54"><a href="#cb31-54" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="RQ3_files/figure-html/cell-22-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="22c143d4-7b00-49ec-be7e-69036e5679dc" class="cell" data-execution_count="82">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>pip install praw wordcloud matplotlib</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Requirement already satisfied: praw in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (7.8.1)
+Collecting wordcloud
+  Downloading wordcloud-1.9.4-cp312-cp312-macosx_10_13_x86_64.whl.metadata (3.4 kB)
+Requirement already satisfied: matplotlib in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (3.10.0)
+Requirement already satisfied: prawcore&lt;3,&gt;=2.4 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from praw) (2.4.0)
+Requirement already satisfied: update_checker&gt;=0.18 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from praw) (0.18.0)
+Requirement already satisfied: websocket-client&gt;=0.54.0 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from praw) (1.8.0)
+Requirement already satisfied: numpy&gt;=1.6.1 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from wordcloud) (2.2.2)
+Requirement already satisfied: pillow in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from wordcloud) (11.1.0)
+Requirement already satisfied: contourpy&gt;=1.0.1 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from matplotlib) (1.3.1)
+Requirement already satisfied: cycler&gt;=0.10 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from matplotlib) (0.11.0)
+Requirement already satisfied: fonttools&gt;=4.22.0 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from matplotlib) (4.55.3)
+Requirement already satisfied: kiwisolver&gt;=1.3.1 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from matplotlib) (1.4.8)
+Requirement already satisfied: packaging&gt;=20.0 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from matplotlib) (24.2)
+Requirement already satisfied: pyparsing&gt;=2.3.1 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from matplotlib) (3.2.0)
+Requirement already satisfied: python-dateutil&gt;=2.7 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from matplotlib) (2.9.0.post0)
+Requirement already satisfied: requests&lt;3.0,&gt;=2.6.0 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from prawcore&lt;3,&gt;=2.4-&gt;praw) (2.32.3)
+Requirement already satisfied: six&gt;=1.5 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib) (1.16.0)
+Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from requests&lt;3.0,&gt;=2.6.0-&gt;prawcore&lt;3,&gt;=2.4-&gt;praw) (3.3.2)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from requests&lt;3.0,&gt;=2.6.0-&gt;prawcore&lt;3,&gt;=2.4-&gt;praw) (3.7)
+Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from requests&lt;3.0,&gt;=2.6.0-&gt;prawcore&lt;3,&gt;=2.4-&gt;praw) (2.3.0)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from requests&lt;3.0,&gt;=2.6.0-&gt;prawcore&lt;3,&gt;=2.4-&gt;praw) (2024.12.14)
+Downloading wordcloud-1.9.4-cp312-cp312-macosx_10_13_x86_64.whl (173 kB)
+Installing collected packages: wordcloud
+Successfully installed wordcloud-1.9.4
+Note: you may need to restart the kernel to use updated packages.</code></pre>
+</div>
+</div>
+<div id="0171e6c6-a13a-4cfc-bc12-0d9ca533c24d" class="cell" data-execution_count="87">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tutorial source: https://medium.com/mcd-unison/create-word-cloud-scraping-data-from-reddit-api-using-praw-and-spacy-b5c9c61c2d10</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> praw</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> wordcloud <span class="im">import</span> WordCloud, STOPWORDS</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>reddit <span class="op">=</span> praw.Reddit(</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>    client_id<span class="op">=</span><span class="st">"8DsIW4DAuPnHNFSqaFj98A"</span>,</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>    client_secret<span class="op">=</span><span class="st">"FkL4hqDJc81s5JSo02eoB65eqDCWsw"</span>,</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>    user_agent<span class="op">=</span><span class="st">"CapstoneSentimentApp by janellemariie"</span></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>brand_keywords <span class="op">=</span> {</span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Abercrombie"</span>: <span class="st">"abercrombie fashion"</span>,</span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"American Eagle"</span>: <span class="st">"american eagle outfit"</span>,</span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Coach"</span>: <span class="st">"coach bag"</span>,</span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Gap"</span>: <span class="st">"gap clothing"</span>,</span>
+<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">"H&amp;M"</span>: <span class="st">"hm haul"</span>,</span>
+<span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Kate Spade"</span>: <span class="st">"kate spade purse"</span>,</span>
+<span id="cb34-20"><a href="#cb34-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Michael Kors"</span>: <span class="st">"michael kors bag"</span>,</span>
+<span id="cb34-21"><a href="#cb34-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Stuart Weitzman"</span>: <span class="st">"stuart weitzman boots"</span></span>
+<span id="cb34-22"><a href="#cb34-22" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb34-23"><a href="#cb34-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-24"><a href="#cb34-24" aria-hidden="true" tabindex="-1"></a>subreddits <span class="op">=</span> [<span class="st">"femalefashionadvice"</span>, <span class="st">"malefashionadvice"</span>, <span class="st">"frugalmalefashion"</span>, <span class="st">"trendygirl"</span>, <span class="st">"streetwear"</span>]</span>
+<span id="cb34-25"><a href="#cb34-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-26"><a href="#cb34-26" aria-hidden="true" tabindex="-1"></a>extra_stopwords <span class="op">=</span> {</span>
+<span id="cb34-27"><a href="#cb34-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">"https"</span>, <span class="st">"http"</span>, <span class="st">"www"</span>, <span class="st">"imgur"</span>, <span class="st">"com"</span>, <span class="st">"said"</span>, <span class="st">"one"</span>, <span class="st">"get"</span>, <span class="st">"know"</span>, <span class="st">"look"</span>, <span class="st">"thing"</span>, <span class="st">"think"</span>, <span class="st">"even"</span>, <span class="st">"go"</span>, <span class="st">"going"</span>, <span class="st">"also"</span></span>
+<span id="cb34-28"><a href="#cb34-28" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb34-29"><a href="#cb34-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-30"><a href="#cb34-30" aria-hidden="true" tabindex="-1"></a>stopwords <span class="op">=</span> STOPWORDS.union(extra_stopwords)</span>
+<span id="cb34-31"><a href="#cb34-31" aria-hidden="true" tabindex="-1"></a>stopwords <span class="op">=</span> stopwords.union({kw.lower() <span class="cf">for</span> kw <span class="kw">in</span> brand_keywords.values()})</span>
+<span id="cb34-32"><a href="#cb34-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-33"><a href="#cb34-33" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> brand, query <span class="kw">in</span> brand_keywords.items():</span>
+<span id="cb34-34"><a href="#cb34-34" aria-hidden="true" tabindex="-1"></a>    combined_text <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb34-35"><a href="#cb34-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> sub <span class="kw">in</span> subreddits:</span>
+<span id="cb34-36"><a href="#cb34-36" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span>:</span>
+<span id="cb34-37"><a href="#cb34-37" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> post <span class="kw">in</span> reddit.subreddit(sub).search(query, sort<span class="op">=</span><span class="st">"relevance"</span>, limit<span class="op">=</span><span class="dv">75</span>):</span>
+<span id="cb34-38"><a href="#cb34-38" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> post.selftext <span class="kw">and</span> <span class="bu">len</span>(post.selftext.split()) <span class="op">&gt;</span> <span class="dv">20</span>:</span>
+<span id="cb34-39"><a href="#cb34-39" aria-hidden="true" tabindex="-1"></a>                    combined_text <span class="op">+=</span> post.title <span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> post.selftext <span class="op">+</span> <span class="st">" "</span></span>
+<span id="cb34-40"><a href="#cb34-40" aria-hidden="true" tabindex="-1"></a>                <span class="cf">elif</span> <span class="bu">len</span>(post.title.split()) <span class="op">&gt;</span> <span class="dv">5</span>:</span>
+<span id="cb34-41"><a href="#cb34-41" aria-hidden="true" tabindex="-1"></a>                    combined_text <span class="op">+=</span> post.title <span class="op">+</span> <span class="st">" "</span></span>
+<span id="cb34-42"><a href="#cb34-42" aria-hidden="true" tabindex="-1"></a>        <span class="cf">except</span>:</span>
+<span id="cb34-43"><a href="#cb34-43" aria-hidden="true" tabindex="-1"></a>            <span class="cf">continue</span></span>
+<span id="cb34-44"><a href="#cb34-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-45"><a href="#cb34-45" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> combined_text.strip():</span>
+<span id="cb34-46"><a href="#cb34-46" aria-hidden="true" tabindex="-1"></a>        wc <span class="op">=</span> WordCloud(width<span class="op">=</span><span class="dv">800</span>, height<span class="op">=</span><span class="dv">400</span>, background_color<span class="op">=</span><span class="st">"white"</span>, stopwords<span class="op">=</span>stopwords).generate(combined_text)</span>
+<span id="cb34-47"><a href="#cb34-47" aria-hidden="true" tabindex="-1"></a>        plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>))</span>
+<span id="cb34-48"><a href="#cb34-48" aria-hidden="true" tabindex="-1"></a>        plt.imshow(wc, interpolation<span class="op">=</span><span class="st">'bilinear'</span>)</span>
+<span id="cb34-49"><a href="#cb34-49" aria-hidden="true" tabindex="-1"></a>        plt.axis(<span class="st">'off'</span>)</span>
+<span id="cb34-50"><a href="#cb34-50" aria-hidden="true" tabindex="-1"></a>        plt.title(<span class="ss">f"</span><span class="sc">{</span>brand<span class="sc">}</span><span class="ss"> Reddit Word Cloud"</span>)</span>
+<span id="cb34-51"><a href="#cb34-51" aria-hidden="true" tabindex="-1"></a>        plt.show()</span>
+<span id="cb34-52"><a href="#cb34-52" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb34-53"><a href="#cb34-53" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"No results for </span><span class="sc">{</span>brand<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="RQ3_files/figure-html/cell-24-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="RQ3_files/figure-html/cell-24-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="RQ3_files/figure-html/cell-24-output-3.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="RQ3_files/figure-html/cell-24-output-4.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>No results for H&amp;M</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="RQ3_files/figure-html/cell-24-output-6.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="RQ3_files/figure-html/cell-24-output-7.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="RQ3_files/figure-html/cell-24-output-8.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="6ab75059-42f2-4df1-9c21-5ef3d26fe275" class="cell" data-execution_count="110">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tutorial source: https://medium.com/mcd-unison/create-word-cloud-scraping-data-from-reddit-api-using-praw-and-spacy-b5c9c61c2d10</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co"># tutorial source: https://medium.com/mcd-unison/create-word-cloud-scraping-data-from-reddit-api-using-praw-and-spacy-b5c9c61c2d10</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> praw</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> wordcloud <span class="im">import</span> WordCloud, STOPWORDS</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>reddit <span class="op">=</span> praw.Reddit(</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>    client_id<span class="op">=</span><span class="st">"8DsIW4DAuPnHNFSqaFj98A"</span>,</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>    client_secret<span class="op">=</span><span class="st">"FkL4hqDJc81s5JSo02eoB65eqDCWsw"</span>,</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>    user_agent<span class="op">=</span><span class="st">"CapstoneSentimentApp by janellemariie"</span></span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>mass_market_brands <span class="op">=</span> {</span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Abercrombie"</span>: <span class="st">"abercrombie fashion"</span>,</span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"American Eagle"</span>: <span class="st">"american eagle outfit"</span>,</span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Gap"</span>: <span class="st">"gap clothing"</span>,</span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"H&amp;M"</span>: <span class="st">"hm haul"</span></span>
+<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a>luxury_brands <span class="op">=</span> {</span>
+<span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Coach"</span>: <span class="st">"coach bag"</span>,</span>
+<span id="cb36-22"><a href="#cb36-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Kate Spade"</span>: <span class="st">"kate spade purse"</span>,</span>
+<span id="cb36-23"><a href="#cb36-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Michael Kors"</span>: <span class="st">"michael kors bag"</span>,</span>
+<span id="cb36-24"><a href="#cb36-24" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Stuart Weitzman"</span>: <span class="st">"stuart weitzman boots"</span></span>
+<span id="cb36-25"><a href="#cb36-25" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb36-26"><a href="#cb36-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-27"><a href="#cb36-27" aria-hidden="true" tabindex="-1"></a>subreddits <span class="op">=</span> [<span class="st">"femalefashionadvice"</span>, <span class="st">"malefashionadvice"</span>, <span class="st">"frugalmalefashion"</span>, <span class="st">"trendygirl"</span>, <span class="st">"streetwear"</span>]</span>
+<span id="cb36-28"><a href="#cb36-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-29"><a href="#cb36-29" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fetch_text(keywords_dict):</span>
+<span id="cb36-30"><a href="#cb36-30" aria-hidden="true" tabindex="-1"></a>    combined <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb36-31"><a href="#cb36-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> brand, query <span class="kw">in</span> keywords_dict.items():</span>
+<span id="cb36-32"><a href="#cb36-32" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> sub <span class="kw">in</span> subreddits:</span>
+<span id="cb36-33"><a href="#cb36-33" aria-hidden="true" tabindex="-1"></a>            <span class="cf">try</span>:</span>
+<span id="cb36-34"><a href="#cb36-34" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> post <span class="kw">in</span> reddit.subreddit(sub).search(query, sort<span class="op">=</span><span class="st">"relevance"</span>, limit<span class="op">=</span><span class="dv">75</span>):</span>
+<span id="cb36-35"><a href="#cb36-35" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> post.selftext <span class="kw">and</span> <span class="bu">len</span>(post.selftext.split()) <span class="op">&gt;</span> <span class="dv">20</span>:</span>
+<span id="cb36-36"><a href="#cb36-36" aria-hidden="true" tabindex="-1"></a>                        combined <span class="op">+=</span> post.title <span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> post.selftext <span class="op">+</span> <span class="st">" "</span></span>
+<span id="cb36-37"><a href="#cb36-37" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">elif</span> <span class="bu">len</span>(post.title.split()) <span class="op">&gt;</span> <span class="dv">5</span>:</span>
+<span id="cb36-38"><a href="#cb36-38" aria-hidden="true" tabindex="-1"></a>                        combined <span class="op">+=</span> post.title <span class="op">+</span> <span class="st">" "</span></span>
+<span id="cb36-39"><a href="#cb36-39" aria-hidden="true" tabindex="-1"></a>            <span class="cf">except</span>:</span>
+<span id="cb36-40"><a href="#cb36-40" aria-hidden="true" tabindex="-1"></a>                <span class="cf">continue</span></span>
+<span id="cb36-41"><a href="#cb36-41" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> combined</span>
+<span id="cb36-42"><a href="#cb36-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-43"><a href="#cb36-43" aria-hidden="true" tabindex="-1"></a>mass_text <span class="op">=</span> fetch_text(mass_market_brands)</span>
+<span id="cb36-44"><a href="#cb36-44" aria-hidden="true" tabindex="-1"></a>luxury_text <span class="op">=</span> fetch_text(luxury_brands)</span>
+<span id="cb36-45"><a href="#cb36-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-46"><a href="#cb36-46" aria-hidden="true" tabindex="-1"></a>descriptive_keywords <span class="op">=</span> {</span>
+<span id="cb36-47"><a href="#cb36-47" aria-hidden="true" tabindex="-1"></a>    <span class="st">"cute"</span>, <span class="st">"great"</span>, <span class="st">"nice"</span>, <span class="st">"soft"</span>, <span class="st">"quality"</span>, <span class="st">"durable"</span>, <span class="st">"affordable"</span>, <span class="st">"expensive"</span>, <span class="st">"trendy"</span>,</span>
+<span id="cb36-48"><a href="#cb36-48" aria-hidden="true" tabindex="-1"></a>    <span class="st">"versatile"</span>, <span class="st">"timeless"</span>, <span class="st">"cozy"</span>, <span class="st">"stylish"</span>, <span class="st">"classic"</span>, <span class="st">"reliable"</span>, <span class="st">"comfy"</span>, <span class="st">"flattering"</span>,</span>
+<span id="cb36-49"><a href="#cb36-49" aria-hidden="true" tabindex="-1"></a>    <span class="st">"minimal"</span>, <span class="st">"bold"</span>, <span class="st">"structured"</span>, <span class="st">"cheap"</span>, <span class="st">"worth"</span>, <span class="st">"iconic"</span>, <span class="st">"modern"</span>, <span class="st">"vintage"</span>, <span class="st">"beautiful"</span>,</span>
+<span id="cb36-50"><a href="#cb36-50" aria-hidden="true" tabindex="-1"></a>    <span class="st">"elegant"</span>, <span class="st">"perfect"</span>, <span class="st">"simple"</span>, <span class="st">"neutral"</span>, <span class="st">"amazing"</span>, <span class="st">"chic"</span>, <span class="st">"feminine"</span>, <span class="st">"masculine"</span>, <span class="st">"luxurious"</span></span>
+<span id="cb36-51"><a href="#cb36-51" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb36-52"><a href="#cb36-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-53"><a href="#cb36-53" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> keep_only_keywords(text, keyword_set):</span>
+<span id="cb36-54"><a href="#cb36-54" aria-hidden="true" tabindex="-1"></a>    words <span class="op">=</span> text.lower().split()</span>
+<span id="cb36-55"><a href="#cb36-55" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">" "</span>.join([word.strip(<span class="st">".,!?()[]</span><span class="ch">\"</span><span class="st">'"</span>) <span class="cf">for</span> word <span class="kw">in</span> words <span class="cf">if</span> word.strip(<span class="st">".,!?()[]</span><span class="ch">\"</span><span class="st">'"</span>) <span class="kw">in</span> keyword_set])</span>
+<span id="cb36-56"><a href="#cb36-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-57"><a href="#cb36-57" aria-hidden="true" tabindex="-1"></a>mass_filtered <span class="op">=</span> keep_only_keywords(mass_text, descriptive_keywords)</span>
+<span id="cb36-58"><a href="#cb36-58" aria-hidden="true" tabindex="-1"></a>luxury_filtered <span class="op">=</span> keep_only_keywords(luxury_text, descriptive_keywords)</span>
+<span id="cb36-59"><a href="#cb36-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-60"><a href="#cb36-60" aria-hidden="true" tabindex="-1"></a>mass_wc <span class="op">=</span> WordCloud(width<span class="op">=</span><span class="dv">1000</span>, height<span class="op">=</span><span class="dv">500</span>, background_color<span class="op">=</span><span class="st">"white"</span>).generate(mass_filtered)</span>
+<span id="cb36-61"><a href="#cb36-61" aria-hidden="true" tabindex="-1"></a>luxury_wc <span class="op">=</span> WordCloud(width<span class="op">=</span><span class="dv">1000</span>, height<span class="op">=</span><span class="dv">500</span>, background_color<span class="op">=</span><span class="st">"white"</span>).generate(luxury_filtered)</span>
+<span id="cb36-62"><a href="#cb36-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-63"><a href="#cb36-63" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">18</span>, <span class="dv">8</span>))</span>
+<span id="cb36-64"><a href="#cb36-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-65"><a href="#cb36-65" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb36-66"><a href="#cb36-66" aria-hidden="true" tabindex="-1"></a>plt.imshow(mass_wc, interpolation<span class="op">=</span><span class="st">'bilinear'</span>)</span>
+<span id="cb36-67"><a href="#cb36-67" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">'off'</span>)</span>
+<span id="cb36-68"><a href="#cb36-68" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Mass-Market Descriptive Discourse"</span>)</span>
+<span id="cb36-69"><a href="#cb36-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-70"><a href="#cb36-70" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb36-71"><a href="#cb36-71" aria-hidden="true" tabindex="-1"></a>plt.imshow(luxury_wc, interpolation<span class="op">=</span><span class="st">'bilinear'</span>)</span>
+<span id="cb36-72"><a href="#cb36-72" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">'off'</span>)</span>
+<span id="cb36-73"><a href="#cb36-73" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Luxury Brand Descriptive Discourse"</span>)</span>
+<span id="cb36-74"><a href="#cb36-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-75"><a href="#cb36-75" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb36-76"><a href="#cb36-76" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="RQ3_files/figure-html/cell-25-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="ce75ad93-0322-45d0-ab83-533559e0e0de" class="cell" data-execution_count="94">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>pip install spacy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Collecting spacy
+  Downloading spacy-3.8.5-cp312-cp312-macosx_10_13_x86_64.whl.metadata (27 kB)
+Collecting spacy-legacy&lt;3.1.0,&gt;=3.0.11 (from spacy)
+  Downloading spacy_legacy-3.0.12-py2.py3-none-any.whl.metadata (2.8 kB)
+Collecting spacy-loggers&lt;2.0.0,&gt;=1.0.0 (from spacy)
+  Downloading spacy_loggers-1.0.5-py3-none-any.whl.metadata (23 kB)
+Collecting murmurhash&lt;1.1.0,&gt;=0.28.0 (from spacy)
+  Downloading murmurhash-1.0.12-cp312-cp312-macosx_10_13_x86_64.whl.metadata (2.1 kB)
+Collecting cymem&lt;2.1.0,&gt;=2.0.2 (from spacy)
+  Downloading cymem-2.0.11-cp312-cp312-macosx_10_13_x86_64.whl.metadata (8.5 kB)
+Collecting preshed&lt;3.1.0,&gt;=3.0.2 (from spacy)
+  Downloading preshed-3.0.9-cp312-cp312-macosx_10_9_x86_64.whl.metadata (2.2 kB)
+Collecting thinc&lt;8.4.0,&gt;=8.3.4 (from spacy)
+  Downloading thinc-8.3.6-cp312-cp312-macosx_10_13_x86_64.whl.metadata (15 kB)
+Collecting wasabi&lt;1.2.0,&gt;=0.9.1 (from spacy)
+  Downloading wasabi-1.1.3-py3-none-any.whl.metadata (28 kB)
+Collecting srsly&lt;3.0.0,&gt;=2.4.3 (from spacy)
+  Downloading srsly-2.5.1-cp312-cp312-macosx_10_13_x86_64.whl.metadata (19 kB)
+Collecting catalogue&lt;2.1.0,&gt;=2.0.6 (from spacy)
+  Downloading catalogue-2.0.10-py3-none-any.whl.metadata (14 kB)
+Collecting weasel&lt;0.5.0,&gt;=0.1.0 (from spacy)
+  Downloading weasel-0.4.1-py3-none-any.whl.metadata (4.6 kB)
+Collecting typer&lt;1.0.0,&gt;=0.3.0 (from spacy)
+  Downloading typer-0.15.3-py3-none-any.whl.metadata (15 kB)
+Requirement already satisfied: tqdm&lt;5.0.0,&gt;=4.38.0 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from spacy) (4.67.1)
+Requirement already satisfied: numpy&gt;=1.19.0 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from spacy) (2.2.2)
+Requirement already satisfied: requests&lt;3.0.0,&gt;=2.13.0 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from spacy) (2.32.3)
+Collecting pydantic!=1.8,!=1.8.1,&lt;3.0.0,&gt;=1.7.4 (from spacy)
+  Downloading pydantic-2.11.4-py3-none-any.whl.metadata (66 kB)
+Requirement already satisfied: jinja2 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from spacy) (3.1.5)
+Requirement already satisfied: setuptools in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from spacy) (72.1.0)
+Requirement already satisfied: packaging&gt;=20.0 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from spacy) (24.2)
+Collecting langcodes&lt;4.0.0,&gt;=3.2.0 (from spacy)
+  Downloading langcodes-3.5.0-py3-none-any.whl.metadata (29 kB)
+Collecting language-data&gt;=1.2 (from langcodes&lt;4.0.0,&gt;=3.2.0-&gt;spacy)
+  Downloading language_data-1.3.0-py3-none-any.whl.metadata (4.3 kB)
+Collecting annotated-types&gt;=0.6.0 (from pydantic!=1.8,!=1.8.1,&lt;3.0.0,&gt;=1.7.4-&gt;spacy)
+  Downloading annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
+Collecting pydantic-core==2.33.2 (from pydantic!=1.8,!=1.8.1,&lt;3.0.0,&gt;=1.7.4-&gt;spacy)
+  Downloading pydantic_core-2.33.2-cp312-cp312-macosx_10_12_x86_64.whl.metadata (6.8 kB)
+Requirement already satisfied: typing-extensions&gt;=4.12.2 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from pydantic!=1.8,!=1.8.1,&lt;3.0.0,&gt;=1.7.4-&gt;spacy) (4.12.2)
+Collecting typing-inspection&gt;=0.4.0 (from pydantic!=1.8,!=1.8.1,&lt;3.0.0,&gt;=1.7.4-&gt;spacy)
+  Downloading typing_inspection-0.4.0-py3-none-any.whl.metadata (2.6 kB)
+Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy) (3.3.2)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy) (3.7)
+Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy) (2.3.0)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy) (2024.12.14)
+Collecting blis&lt;1.4.0,&gt;=1.3.0 (from thinc&lt;8.4.0,&gt;=8.3.4-&gt;spacy)
+  Downloading blis-1.3.0-cp312-cp312-macosx_10_13_x86_64.whl.metadata (7.4 kB)
+Collecting confection&lt;1.0.0,&gt;=0.0.1 (from thinc&lt;8.4.0,&gt;=8.3.4-&gt;spacy)
+  Downloading confection-0.1.5-py3-none-any.whl.metadata (19 kB)
+Requirement already satisfied: click&gt;=8.0.0 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from typer&lt;1.0.0,&gt;=0.3.0-&gt;spacy) (8.1.8)
+Collecting shellingham&gt;=1.3.0 (from typer&lt;1.0.0,&gt;=0.3.0-&gt;spacy)
+  Downloading shellingham-1.5.4-py2.py3-none-any.whl.metadata (3.5 kB)
+Collecting rich&gt;=10.11.0 (from typer&lt;1.0.0,&gt;=0.3.0-&gt;spacy)
+  Downloading rich-14.0.0-py3-none-any.whl.metadata (18 kB)
+Collecting cloudpathlib&lt;1.0.0,&gt;=0.7.0 (from weasel&lt;0.5.0,&gt;=0.1.0-&gt;spacy)
+  Downloading cloudpathlib-0.21.0-py3-none-any.whl.metadata (14 kB)
+Collecting smart-open&lt;8.0.0,&gt;=5.2.1 (from weasel&lt;0.5.0,&gt;=0.1.0-&gt;spacy)
+  Downloading smart_open-7.1.0-py3-none-any.whl.metadata (24 kB)
+Requirement already satisfied: MarkupSafe&gt;=2.0 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from jinja2-&gt;spacy) (2.1.3)
+Collecting marisa-trie&gt;=1.1.0 (from language-data&gt;=1.2-&gt;langcodes&lt;4.0.0,&gt;=3.2.0-&gt;spacy)
+  Downloading marisa_trie-1.2.1-cp312-cp312-macosx_10_13_x86_64.whl.metadata (9.0 kB)
+Collecting markdown-it-py&gt;=2.2.0 (from rich&gt;=10.11.0-&gt;typer&lt;1.0.0,&gt;=0.3.0-&gt;spacy)
+  Downloading markdown_it_py-3.0.0-py3-none-any.whl.metadata (6.9 kB)
+Requirement already satisfied: pygments&lt;3.0.0,&gt;=2.13.0 in /opt/anaconda3/envs/capstone/lib/python3.12/site-packages (from rich&gt;=10.11.0-&gt;typer&lt;1.0.0,&gt;=0.3.0-&gt;spacy) (2.15.1)
+Collecting wrapt (from smart-open&lt;8.0.0,&gt;=5.2.1-&gt;weasel&lt;0.5.0,&gt;=0.1.0-&gt;spacy)
+  Downloading wrapt-1.17.2-cp312-cp312-macosx_10_13_x86_64.whl.metadata (6.4 kB)
+Collecting mdurl~=0.1 (from markdown-it-py&gt;=2.2.0-&gt;rich&gt;=10.11.0-&gt;typer&lt;1.0.0,&gt;=0.3.0-&gt;spacy)
+  Downloading mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
+Downloading spacy-3.8.5-cp312-cp312-macosx_10_13_x86_64.whl (6.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.3/6.3 MB 13.5 MB/s eta 0:00:00a 0:00:01
+Downloading catalogue-2.0.10-py3-none-any.whl (17 kB)
+Downloading cymem-2.0.11-cp312-cp312-macosx_10_13_x86_64.whl (42 kB)
+Downloading langcodes-3.5.0-py3-none-any.whl (182 kB)
+Downloading murmurhash-1.0.12-cp312-cp312-macosx_10_13_x86_64.whl (27 kB)
+Downloading preshed-3.0.9-cp312-cp312-macosx_10_9_x86_64.whl (133 kB)
+Downloading pydantic-2.11.4-py3-none-any.whl (443 kB)
+Downloading pydantic_core-2.33.2-cp312-cp312-macosx_10_12_x86_64.whl (2.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.0/2.0 MB 10.0 MB/s eta 0:00:00
+Downloading spacy_legacy-3.0.12-py2.py3-none-any.whl (29 kB)
+Downloading spacy_loggers-1.0.5-py3-none-any.whl (22 kB)
+Downloading srsly-2.5.1-cp312-cp312-macosx_10_13_x86_64.whl (636 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 636.7/636.7 kB 19.3 MB/s eta 0:00:00
+Downloading thinc-8.3.6-cp312-cp312-macosx_10_13_x86_64.whl (890 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 890.2/890.2 kB 39.0 MB/s eta 0:00:00
+Downloading typer-0.15.3-py3-none-any.whl (45 kB)
+Downloading wasabi-1.1.3-py3-none-any.whl (27 kB)
+Downloading weasel-0.4.1-py3-none-any.whl (50 kB)
+Downloading annotated_types-0.7.0-py3-none-any.whl (13 kB)
+Downloading blis-1.3.0-cp312-cp312-macosx_10_13_x86_64.whl (7.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.0/7.0 MB 24.4 MB/s eta 0:00:00a 0:00:01
+Downloading cloudpathlib-0.21.0-py3-none-any.whl (52 kB)
+Downloading confection-0.1.5-py3-none-any.whl (35 kB)
+Downloading language_data-1.3.0-py3-none-any.whl (5.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.4/5.4 MB 24.6 MB/s eta 0:00:00a 0:00:01
+Downloading rich-14.0.0-py3-none-any.whl (243 kB)
+Downloading shellingham-1.5.4-py2.py3-none-any.whl (9.8 kB)
+Downloading smart_open-7.1.0-py3-none-any.whl (61 kB)
+Downloading typing_inspection-0.4.0-py3-none-any.whl (14 kB)
+Downloading marisa_trie-1.2.1-cp312-cp312-macosx_10_13_x86_64.whl (190 kB)
+Downloading markdown_it_py-3.0.0-py3-none-any.whl (87 kB)
+Downloading wrapt-1.17.2-cp312-cp312-macosx_10_13_x86_64.whl (38 kB)
+Downloading mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+Installing collected packages: cymem, wrapt, wasabi, typing-inspection, spacy-loggers, spacy-legacy, shellingham, pydantic-core, murmurhash, mdurl, marisa-trie, cloudpathlib, catalogue, blis, annotated-types, srsly, smart-open, pydantic, preshed, markdown-it-py, language-data, rich, langcodes, confection, typer, thinc, weasel, spacy
+Successfully installed annotated-types-0.7.0 blis-1.3.0 catalogue-2.0.10 cloudpathlib-0.21.0 confection-0.1.5 cymem-2.0.11 langcodes-3.5.0 language-data-1.3.0 marisa-trie-1.2.1 markdown-it-py-3.0.0 mdurl-0.1.2 murmurhash-1.0.12 preshed-3.0.9 pydantic-2.11.4 pydantic-core-2.33.2 rich-14.0.0 shellingham-1.5.4 smart-open-7.1.0 spacy-3.8.5 spacy-legacy-3.0.12 spacy-loggers-1.0.5 srsly-2.5.1 thinc-8.3.6 typer-0.15.3 typing-inspection-0.4.0 wasabi-1.1.3 weasel-0.4.1 wrapt-1.17.2
+Note: you may need to restart the kernel to use updated packages.</code></pre>
+</div>
+</div>
+<div id="810e9a77-78f9-484c-9d58-132ea2613dad" class="cell" data-execution_count="97">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>python <span class="op">-</span>m spacy download en_core_web_sm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Collecting en-core-web-sm==3.8.0
+  Downloading https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl (12.8 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.8/12.8 MB 41.1 MB/s eta 0:00:00 0:00:01
+Installing collected packages: en-core-web-sm
+Successfully installed en-core-web-sm-3.8.0
+✔ Download and installation successful
+You can now load the package via spacy.load('en_core_web_sm')</code></pre>
+</div>
+</div>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

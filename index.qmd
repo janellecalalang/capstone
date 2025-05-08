@@ -19,15 +19,25 @@ jupyter: python3
 
 ![Source: Unsplash.com](vasilis-caravitis-KhWNxsFWU84-unsplash.jpg){fig-alt="Shoppers walking through a mall with glass storefronts." width=80%}
 
-# Abstract
+# Introduction
 
 What do elections, inflation, and luxury handbags have in common? More than you'd think. This study explores how political and economic events between 2012 and 2024 affected consumer behavior and brand value in both luxury and mass-market fashion sectors.
+
+**Research Question**: How do macroeconomic and political events, like U.S. elections, inflationary periods, and global crises, impact the performance of luxury versus mass-market fashion brands?
+
+To guide this research, I focused on three key sub-questions:
+
+* How do major political and economic events influence brand sales and reported goodwill?
+
+* Does the stability of goodwill correlate with greater financial resilience over time?
+
+* How does consumer sentiment on social media align with goodwill shifts and sales trends?
 
 # The Data
 
 Like any good design process, this started with cutting, trimming, and reshaping.
 
-To understand how consumers responded to economic and political shifts, I gathered data from a variety of sources. Sales figures were collected from major fashion brands including Coach, Kate Spade, Stuart Weitzman, Michael Kors, H&M, The Gap, Abercrombie, and American Eagle. I also analyzed goodwill and intangible asset values using annual financial reports to track how brand equity held up over time. Since many of these reports were designed with investors in mind, they often prioritized visual appeal over data accessibility. Their layout choices (such as stylized tables, embedded text, and inconsistent formatting), made web scraping impractical. As a result, I had to manually review each report and extract the relevant figures one by one. While time-consuming, this approach ensured that the data used in my analysis was both accurate and complete. Consumer sentiment was collected from Reddit using the Pushshift API, and economic indicators like CPI and GDP were sourced from the FRED database. I also used Google Trends to trace shifts in public interest and brand engagement during periods of uncertainty.
+To understand how consumers responded to economic and political shifts, I gathered data from a variety of sources. Sales figures were collected from major fashion brands including Coach, Kate Spade, Stuart Weitzman, Michael Kors, H&M, The Gap, Abercrombie, and American Eagle. I also analyzed goodwill and intangible asset values using annual financial reports to track how brand equity held up over time. Since many of these reports were designed with investors in mind, they often prioritized visual appeal over data accessibility. Their layout choices (such as stylized tables, embedded text, and inconsistent formatting), made web scraping impractical. As a result, I had to manually review each report and extract the relevant figures one by one. Despite the lengthy process, this approach ensured that the data used in my analysis was both accurate and complete. Consumer sentiment was collected from Reddit using the Pushshift API, and economic indicators like CPI and GDP were sourced from the FRED database. I also used Google Trends to trace shifts in public interest and brand engagement during periods of uncertainty.
 
 
 # Exploratory Data Analysis
@@ -40,22 +50,17 @@ Because in fashion and in data, the details always matter.
 ## Fashion by the Figures 
 To understand how consumer behavior changed across economic and political cycles, I relied on several key visualizations:
 
-* Sales Trends by Brand (2012–2024): A line graph showing net sales across eight major fashion brands, highlighting how different labels performed over time.
-
-* Sales + Goodwill & Intangibles Over Time: These layered line plots tracked luxury vs. mass-market brand sales alongside their goodwill and intangible asset valuations, offering insight into how brand equity held up during major events.
-
-*  COVID-19 Sales Impact Bar Chart: A side-by-side comparison of percentage sales change from Q4 2019 to Q2 2020, showing which brands were hardest hit during the pandemic.
-
-* Correlation Tables for Google Trends & Reddit Sentiment: These tables summarized the strength and significance of the relationship between public interest or consumer sentiment and brand sales.
-
-* CPI, GDP & Sales by Election vs. Non-Election Quarters (Boxplots): These visuals helped compare economic indicators and sales performance during politically sensitive periods.
-
-* Luxury vs. Mass-Market Sales & Inflation (Dual Axis Line Plot): This combined plot shows how CPI moved in relation to luxury and mass-market sales, and how each sector responded to inflation spikes.
-
-* Word Clouds from Reddit (Mass-Market vs. Luxury): These highlighted the most commonly used descriptive words in Reddit posts for each brand category, offering a snapshot of public sentiment and product perception.
+* [Sales Trends by Brand (2012–2024)](#threading-the-timeline-sales-by-brand-2012–2024): A line graph showing net sales across eight major fashion brands.
+* [Sales + Goodwill & Intangibles Over Time](#sales-trends-and-goodwill-valuations-2012–2024): Layered line plots comparing brand equity and sales.
+* [COVID-19 Sales Impact Bar Chart](#when-the-malls-closed-covid-19-sales-impact): Sales drops and rebounds during early pandemic quarters.
+* [Google Trends vs. Sales](#google-search-interest-correlation-analysis): Relationship between public interest and revenue.
+* [Reddit Sentiment vs. Sales](#reddit-consumer-sentiment-correlation-analysis): Community discourse’s connection to consumer activity.
+* [Election Year Boxplots](#election-years-on-the-runway): Visuals comparing CPI, GDP, and sales during political cycles.
+* [Inflation & Sales (Dual Axis)](#luxury-vs-mass-market-sales--inflation): Tracks CPI against luxury and mass-market revenue.
+* [Reddit Word Clouds](#reddit-but-make-it-fashion): Snapshot of consumer language by brand category.
 
 ### Threading the Timeline: Sales by Brand (2012–2024)
-This line graph shows yearly sales data for each brand included in the study. Mass-market brands like H&M and Gap clearly lead in overall volume, but the lines also reveal volatility, especially around 2020. In contrast, luxury brands like Coach and Michael Kors remain more stable over time, hinting at stronger consumer loyalty.
+Yearly sales trends paint a clear picture of consumer behavior over time. This line graph shows yearly sales data for each brand included in the study. Mass-market brands like H&M and Gap clearly lead in overall volume, but the lines also reveal volatility, especially around 2020. In contrast, luxury brands like Coach and Michael Kors remain more stable over time, suggesting a loyal customer base even during global events.
 
 ```{python}
 import pandas as pd
@@ -131,7 +136,7 @@ plt.show()
 
 ```
 
-Here, I charted the goodwill values reported in brand financial statements. Despite shifts in sales, brands like Coach and Michael Kors maintained consistently high goodwill. This suggests that even during moments of uncertainty, these brands retained intangible value. Mass-market brands, on the other hand, reported minimal goodwill.
+Tracking goodwill over time showed that certain luxury brands maintain consistently high brand equity. This kind of brand resilience, which is rooted in emotional appeal and customer trust, was not as evident in mass-market brands, which reported lower or fluctuating goodwill values. Despite shifts in sales, brands like Coach and Michael Kors maintained consistently high goodwill. This suggests that even during moments of uncertainty, these brands retained intangible value. Mass-market brands, on the other hand, reported minimal goodwill.
 
 ```{python}
 combined_goodwill["Goodwill Value ($ Millions)"] = (
@@ -222,7 +227,7 @@ plt.show()
 ### When the Malls Closed: COVID-19 Sales Impact
 ![COVID-era fashion consumer](arturo-rey-5yP83RhaFGA-unsplash.jpg)
 
-In this bar chart, I isolated the difference in sales between Q4 2019 and Q2 2020 to capture the immediate impact of COVID-19. H&M saw the sharpest decline, while brands like Coach and Stuart Weitzman actually experienced growth. This highlights the resilience of certain luxury brands in contrast to the vulnerability of mass-market players during crisis moments.
+When the pandemic hit, it disrupted everything including consumer habits. In this bar chart, I isolated the difference in sales between Q4 2019 and Q2 2020 to capture the immediate impact of COVID-19. H&M saw the sharpest decline, while brands like Coach and Stuart Weitzman actually experienced growth. This highlights the resilience of certain luxury brands in contrast to the vulnerability of mass-market players during crisis moments.
 
 ```{python}
 sales_2019_q4 = combined_sales[(combined_sales["Year"] == 2019) & (combined_sales["Fiscal Quarter"] == "Q4")].groupby("Brand")["Net Sales ($ Millions)"].sum()
@@ -246,7 +251,7 @@ plt.show()
 ```
 
 ### Google Search Interest Correlation Analysis
-This is a correlation test between Google Trends search interest against brand sales. Abercrombie and H&M show a strong positive correlation, suggesting that curiosity and conversion were linked. Interestingly, American Eagle breaks that trend—more search interest actually aligned with fewer sales, which may reflect negative buzz or unmet consumer expectations.
+Consumer sentiment often translates into higher sales, but does it always? Abercrombie and H&M show a strong positive correlation, suggesting that curiosity and conversion were linked. Interestingly, American Eagle breaks that trend—more search interest actually aligned with fewer sales, which may reflect negative buzz or unmet consumer expectations.
 
 ```{python}
 import pandas as pd
@@ -307,6 +312,20 @@ for file in files:
 ```
 
 ### Reddit Consumer Sentiment Correlation Analysis
+Reddit offers a rich landscape of unfiltered consumer dialogue. To capture sentiment about the brands in this study, I collected posts from five fashion-focused subreddits:
+
+* r/femalefashionadvice
+
+* r/malefashionadvice
+
+* r/frugalmalefashion
+
+* r/trendygirl
+
+* r/streetwear
+
+For each brand, I used curated search queries that reflect how users typically discuss fashion items. For instance, queries like "abercrombie fashion" or "coach bag" were designed to surface relevant posts. Posts were filtered for length and relevance, and then sentiment analysis was performed using a Natural Language Processing model. I computed yearly sentiment averages and correlated them with annual sales data.
+
 H&M and American Eagle showed positive relationships between sentiment and sales, while Gap trailed behind. This suggests that positive community perception, especially on platforms like Reddit, may have some correlation to support stronger performance.
 
 ```{python}
@@ -326,7 +345,7 @@ for brand in brands:
 ```
 
 ### Election Years on the Runway
-This triple boxplot compares GDP, CPI, and sales across pre-election, election, and post-election quarters. While GDP and sales don’t shift dramatically, CPI tends to dip slightly during election quarters, possibly reflecting political efforts to stabilize consumer prices. This graph displays fashion consumption in a broader macroeconomic context.
+How do politics shape our closets? This triple boxplot compares GDP, CPI, and sales across pre-election, election, and post-election quarters. While GDP and sales don’t shift dramatically, CPI tends to dip slightly during election quarters, possibly reflecting political efforts to stabilize consumer prices. This graph displays fashion consumption in a broader macroeconomic context.
 
 ```{python}
 import seaborn as sns
@@ -382,9 +401,9 @@ plt.tight_layout()
 plt.show()
 ```
 
-This dual-axis plot tracks the relationship between luxury and mass-market sales alongside inflation (measured by median CPI) from 2012 to 2024. Mass-market brands remained relatively steady in sales, with a notable dip during the 2020 election and pandemic before bouncing back. Luxury sales, while more volatile, show steady growth until 2022, when rising inflation appears to coincide with a decline. The pattern suggests that inflation might affect luxury consumers differently. Still, both sectors held their ground surprisingly well. I guess price tags don't sway easily under economic pressure. 
+When visualizing luxury and mass-market sales against median CPI, I found that luxury brands were more sensitive to inflation spikes, especially post-2022. Mass-market brands remained relatively steady in sales, with a notable dip during the 2020 election and pandemic before bouncing back. Luxury sales, while more volatile, show steady growth until 2022, when rising inflation appears to coincide with a decline. The pattern suggests that inflation might affect luxury consumers differently. Still, both sectors held their ground surprisingly well. I guess price tags don't sway easily under economic pressure. 
 
-```{python}
+```{python, warning=false}
 cpi = pd.read_csv("/Users/janellemarie/datasets/MEDCPI.csv")
 cpi["Date"] = pd.to_datetime(cpi["observation_date"])
 cpi = cpi.rename(columns={"MEDCPIM158SFRBCLE": "Median CPI"})
@@ -431,7 +450,7 @@ plt.show()
 ```
 
 ### Reddit, but Make It Fashion
-Finally, I created two word clouds from Reddit data to capture the tone of consumer conversations. Together, these visuals show how people talk about fashion very differently depending on the brand category.
+Finally, I explored the language of fashion. Using descriptive words from Reddit posts, I created word clouds that visualized how people talked about different brand categories. Together, these visuals show how people talk about fashion very differently depending on the brand category.
 
 ```{python}
 ## tutorial source: https://medium.com/mcd-unison/create-word-cloud-scraping-data-from-reddit-api-using-praw-and-spacy-b5c9c61c2d10
@@ -514,7 +533,7 @@ plt.show()
 # Conclusion
 This project began with a simple question: does the economy influence where people choose to shop? After examining over a decade of brand data alongside economic indicators, election cycles, and online sentiment, the answer reveals itself in patterns that are subtle but consistent. Luxury and mass-market brands do not respond to financial pressure in the same way. Mass-market labels often depend on volume and price sensitivity, while luxury brands depend on long-term brand equity and emotional loyalty from consumers.
 
-Events like the 2020 election and the onset of the COVID-19 pandemic were not just sales disruptors. They also marked shifts in how people searched for and discussed fashion online. Public interest data from Google and sentiment pulled from Reddit posts added dimension to the financial trends.
+Events like the 2020 election and the COVID-19 pandemic were not just sales disruptors. They also marked shifts in how people searched for and discussed fashion online. Public interest data from Google and sentiment pulled from Reddit posts added dimension to the financial trends.
 
 Fashion has always reflected more than personal taste. It reflects timing, perception, and the economic realities people live in. Understanding those relationships can help brands anticipate how style survives uncertainty.
 
